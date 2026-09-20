@@ -1,8 +1,6 @@
 name: Daily Java LinkedIn Post
-
 on:
   schedule:
-    # 08:10 AM Asia/Kolkata every day.
     - cron: "10 8 * * *"
       timezone: "Asia/Kolkata"
   workflow_dispatch:
@@ -12,14 +10,11 @@ on:
         required: false
         default: "false"
         type: boolean
-
 permissions:
   contents: write
-
 concurrency:
   group: java-linkedin-daily-post
   cancel-in-progress: false
-
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -30,24 +25,34 @@ jobs:
     env:
       AUTO_POST_ENABLED: ${{ vars.AUTO_POST_ENABLED || 'false' }}
       POST_MAX_CHARS: ${{ vars.POST_MAX_CHARS || '2850' }}
-      LINKEDIN_VERSION: ${{ vars.LINKEDIN_VERSION || '202604' }}
+      LINKEDIN_VERSION: ${{ vars.LINKEDIN_VERSION || '202609' }}
       LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
       LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
       - name: Generate post
         run: python src/generate_post.py
-
+      - name: Validate generated post
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json, os, re
+          post=Path('output/latest.txt').read_text(encoding='utf-8')
+          meta=json.loads(Path('output/metadata.json').read_text(encoding='utf-8'))
+          limit=int(os.environ.get('POST_MAX_CHARS','2850'))
+          if len(post)>limit: raise SystemExit(f'Post is {len(post)} chars; max is {limit}')
+          if meta.get('question_count')!=5: raise SystemExit('Expected exactly 5 primary questions')
+          if not re.search(r'https?://',post): raise SystemExit('Guide URL missing')
+          if len(re.findall(r'(?<!\w)#\w+',post))!=5: raise SystemExit('Expected exactly 5 hashtags')
+          print(f'Validation passed: {len(post)} chars, 5 questions, 5 hashtags.')
+          PY
       - name: Publish to LinkedIn
         run: python src/post_to_linkedin.py
-
       - name: Commit generated post and metadata
         run: |
           git config user.name "github-actions[bot]"
