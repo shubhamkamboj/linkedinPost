@@ -1,0 +1,12 @@
+{
+  "project": "java-linkedin-daily-post-generator-linkedin",
+  "version": "2.0.0",
+  "python": "3.12+",
+  "third_party_python_packages": false,
+  "generation_api": false,
+  "publishing": "LinkedIn official Posts API",
+  "linkedin_permission": "w_member_social",
+  "default_link": "https://topmate.io/shubham_kamboj_06/new/Np6bUJzcPS",
+  "schedule": "08:10 Asia/Kolkata daily",
+  "toggle": "AUTO_POST_ENABLED"
+}

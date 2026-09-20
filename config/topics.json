@@ -1,0 +1,170 @@
+{
+  "topics": [
+    {
+      "name": "Core Java",
+      "questions": [
+        "How does HashMap work internally, and what happens when a bucket becomes a tree?",
+        "Why must equals() and hashCode() follow a contract?",
+        "Why is String immutable, and what practical benefits does that give?",
+        "Comparable vs Comparator: when would you use each?",
+        "Checked vs unchecked exceptions: when would you choose each?",
+        "What happens during class loading and initialization?",
+        "Why can ArrayList become a performance problem with a large dataset?",
+        "How do records and sealed classes help domain modeling?",
+        "What does try-with-resources solve internally?",
+        "What is the difference between abstraction and encapsulation?"
+      ]
+    },
+    {
+      "name": "Java 8+ / Streams",
+      "questions": [
+        "map() vs flatMap(): what is the real difference?",
+        "What are intermediate and terminal operations in Streams?",
+        "Why are Streams lazy?",
+        "When would parallelStream() hurt performance?",
+        "Optional.orElse() vs orElseGet(): why can it matter?",
+        "How would you find duplicate values using Streams?",
+        "How would you group employees by department and calculate average salary?",
+        "findFirst() vs findAny(): what changes with parallel execution?",
+        "How would you sort a Map by value using Streams?",
+        "Why should side effects inside Stream pipelines be avoided?"
+      ]
+    },
+    {
+      "name": "Multithreading & Concurrency",
+      "questions": [
+        "Runnable vs Callable: what changes when a task returns a result?",
+        "start() vs run(): what actually creates a new thread?",
+        "volatile vs synchronized: what problem does each solve?",
+        "Why is volatile not enough for count++?",
+        "What happens when an ExecutorService thread pool is exhausted?",
+        "Why can creating too many threads make an application slower?",
+        "How would you prevent a race condition in a payment workflow?",
+        "How would you detect a deadlock in a running JVM?",
+        "How can CompletableFuture still block an application?",
+        "How would you handle 1,000 tasks using a limited number of threads?",
+        "synchronized vs ReentrantLock: when does explicit locking help?",
+        "What happens when an ExecutorService task throws an exception?"
+      ]
+    },
+    {
+      "name": "Spring Boot",
+      "questions": [
+        "How does dependency injection resolve beans during application startup?",
+        "What happens during the Spring Bean lifecycle?",
+        "How does Spring Boot auto-configuration decide what to configure?",
+        "@Component vs @Service vs @Repository: what is actually different?",
+        "Constructor injection vs field injection: what changes for testing?",
+        "How does @Transactional work internally?",
+        "What happens with a checked exception inside a @Transactional method?",
+        "How would you implement global exception handling?",
+        "What does Spring Security do during a JWT request?",
+        "How would you configure multiple data sources in Spring Boot?",
+        "Which Actuator endpoints are useful in production debugging?"
+      ]
+    },
+    {
+      "name": "Microservices",
+      "questions": [
+        "What does an API Gateway actually do?",
+        "How does service discovery work?",
+        "REST vs Kafka vs gRPC: how would you choose?",
+        "Why can retries make a downstream outage worse?",
+        "How does a circuit breaker protect a microservice system?",
+        "How would you trace one request across five services?",
+        "What is idempotency and why is it important for payment APIs?",
+        "How would you handle a partial failure between two services?",
+        "Saga vs two-phase commit: what trade-offs matter?",
+        "How would you design rate limiting for a public API?"
+      ]
+    },
+    {
+      "name": "Kafka",
+      "questions": [
+        "How do Kafka partitions and consumer groups work together?",
+        "What happens if a consumer crashes after processing but before committing?",
+        "How would you investigate growing consumer lag?",
+        "At-most-once vs at-least-once vs exactly-once: what do you guarantee?",
+        "How would you design retries and a dead-letter topic?",
+        "Why is a Kafka message key important for ordering?",
+        "How would you handle a sudden traffic spike without overwhelming consumers?",
+        "What is the difference between partition ordering and global ordering?",
+        "How would you make a Kafka-based operation idempotent?",
+        "Which metrics would you monitor for a production Kafka consumer?"
+      ]
+    },
+    {
+      "name": "SQL & Hibernate",
+      "questions": [
+        "When can an index hurt performance instead of helping?",
+        "How would you find duplicate rows in SQL?",
+        "RANK(), DENSE_RANK(), and ROW_NUMBER(): what is the difference?",
+        "How would you find the second-highest salary without LIMIT?",
+        "What is the N+1 problem in Hibernate and how do you fix it?",
+        "Lazy vs eager loading: what trade-off are you making?",
+        "Optimistic vs pessimistic locking: when would you use each?",
+        "How would you investigate a query that became slow as data grew?",
+        "What happens when the database connection pool is exhausted?",
+        "How does transaction isolation affect concurrent updates?"
+      ]
+    },
+    {
+      "name": "System Design",
+      "questions": [
+        "Design real-time inventory sync between online orders and physical stores without overselling.",
+        "Design checkout for a traffic spike where payment and inventory checks can time out.",
+        "Design an order workflow where payment succeeds but inventory reservation times out.",
+        "Design a rate limiter for an API serving millions of requests per day.",
+        "Design a notification system that supports retries without duplicate notifications.",
+        "Design a distributed cache strategy for data that changes during a flash sale.",
+        "Design an event-driven order workflow where failures can be retried safely.",
+        "Design a URL shortener and explain storage, cache, ID generation and scaling.",
+        "Design a returns workflow that updates inventory and refunds without conflicting updates.",
+        "Design a large nightly batch job that cannot overlap with the next run."
+      ]
+    },
+    {
+      "name": "Production Scenarios",
+      "questions": [
+        "An API is fast normally but extremely slow during peak traffic. What would you inspect first?",
+        "CPU is low but request latency is high. Which bottlenecks could explain that?",
+        "Memory usage keeps climbing after every deployment. How would you investigate a leak?",
+        "GC pauses suddenly become long in production. What data would you collect first?",
+        "A thread pool is saturated and request timeouts are rising. How would you isolate the cause?",
+        "Database connection pool usage is at 100%. How would you identify the bottleneck?",
+        "Kafka consumer lag grows while CPU stays normal. What would you investigate?",
+        "A cache says an item is in stock even though it sold out minutes ago. What consistency issue is occurring?",
+        "A batch job that normally takes two hours now takes nine. How would you diagnose it?",
+        "A production price update affects thousands of records. What monitoring and safety nets should catch it?"
+      ]
+    },
+    {
+      "name": "Coding & SQL",
+      "questions": [
+        "Move all zeroes to the end of an array while preserving non-zero order.",
+        "Find the first non-repeated character in a string.",
+        "Find the longest common prefix in a list of strings.",
+        "Find a pair of numbers whose sum equals a target.",
+        "Implement an LRU cache and explain the data structures.",
+        "Find the missing number from an array containing values from 0 to n.",
+        "Check whether two strings are anagrams without sorting.",
+        "Find the second-largest number in an array in one pass.",
+        "Reverse a linked list iteratively and recursively.",
+        "Find the minimum-length subarray whose sum reaches a target."
+      ]
+    },
+    {
+      "name": "Project Discussion",
+      "questions": [
+        "Explain your project architecture end to end.",
+        "What were your exact responsibilities in the project?",
+        "Describe one production issue you owned and how you fixed it.",
+        "Which technical trade-off did you make and why?",
+        "How did you handle security and authentication?",
+        "How did you design the database and deal with performance?",
+        "What observability or monitoring did you implement?",
+        "What would you change if the system had 10x the current traffic?"
+      ]
+    }
+  ]
+}

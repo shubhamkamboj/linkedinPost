@@ -1,0 +1,61 @@
+name: Daily Java LinkedIn Post
+
+on:
+  schedule:
+    # 08:10 AM Asia/Kolkata every day.
+    - cron: "10 8 * * *"
+      timezone: "Asia/Kolkata"
+  workflow_dispatch:
+    inputs:
+      force_run:
+        description: "Generate and publish once even when AUTO_POST_ENABLED is false"
+        required: false
+        default: "false"
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: java-linkedin-daily-post
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    if: >-
+      (github.event_name == 'workflow_dispatch' && inputs.force_run == true)
+      ||
+      (github.event_name == 'schedule' && vars.AUTO_POST_ENABLED == 'true')
+    env:
+      AUTO_POST_ENABLED: ${{ vars.AUTO_POST_ENABLED || 'false' }}
+      POST_MAX_CHARS: ${{ vars.POST_MAX_CHARS || '2850' }}
+      LINKEDIN_VERSION: ${{ vars.LINKEDIN_VERSION || '202604' }}
+      LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+      LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate post
+        run: python src/generate_post.py
+
+      - name: Publish to LinkedIn
+        run: python src/post_to_linkedin.py
+
+      - name: Commit generated post and metadata
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add output/
+          if git diff --cached --quiet; then
+            echo "No output changes to commit."
+          else
+            git commit -m "chore: generate and publish daily LinkedIn post"
+            git push
+          fi
