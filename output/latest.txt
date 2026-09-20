@@ -1,0 +1,18 @@
+⚡ If you are preparing for a Java Backend interview, practice questions like these.
+
+🧠 CODING & SQL
+
+1. Find a pair of numbers whose sum equals a target.
+2. Reverse a linked list iteratively and recursively.
+3. Find the first non-repeated character in a string.
+4. Find the second-largest number in an array in one pass.
+5. Check whether two strings are anagrams without sorting.
+
+🎯 FOLLOW-UP SCENARIO
+6. Optimistic vs pessimistic locking: when would you use each?
+
+📌 A strong answer usually covers the concept, a real use case, and the trade-off behind the choice.
+
+📘 You can get the complete guide from here: https://topmate.io/shubham_kamboj_06/new/Np6bUJzcPS
+
+#Java #JavaProgramming #BackendDeveloper #SystemDesign #CodingInterview
