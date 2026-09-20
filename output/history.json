@@ -1,0 +1,15 @@
+[
+  {
+    "fingerprint": "114d6473b17547befcbe",
+    "topic": "Java 8+ / Streams / Functional Programming",
+    "questions": [
+      "What does unordered() do to a stream?",
+      "How would you group transactions by month using Streams?",
+      "What exception occurs when a stream is reused?",
+      "When can unordered streams improve parallel performance?",
+      "How does limit() behave on ordered parallel streams?"
+    ],
+    "followup": "How would you detect a Redis hot key?",
+    "generated_at_utc": "2026-09-20T07:36:07.181434+00:00"
+  }
+]

@@ -1,7 +1,8 @@
 {
-  "topic": "Coding & SQL",
+  "topic": "Java 8+ / Streams / Functional Programming",
+  "question_count": 5,
   "guide_link": "https://topmate.io/shubham_kamboj_06/new/Np6bUJzcPS",
-  "character_count": 735,
+  "character_count": 733,
   "hashtags": [
     "#Java",
     "#JavaProgramming",
@@ -9,9 +10,12 @@
     "#SystemDesign",
     "#CodingInterview"
   ],
-  "generated_at_utc": "2026-09-20T07:20:32.468552+00:00",
-  "generator": "python-standard-library-template-engine",
+  "fingerprint": "114d6473b17547befcbe",
+  "generated_at_utc": "2026-09-20T07:36:07.181434+00:00",
+  "history_size": 1,
+  "question_bank_size": 518,
+  "generator": "python-standard-library-template-engine-v2",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7507337891493154816",
+  "linkedin_post_id": "urn:li:share:7507341812777340928",
   "linkedin_status": 201
 }
