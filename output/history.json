@@ -37,5 +37,18 @@
     ],
     "followup": "Design a returns workflow that updates inventory and refunds without conflicting updates.",
     "generated_at_utc": "2026-09-21T05:33:43.906893+00:00"
+  },
+  {
+    "fingerprint": "f80a3d35542a44e40f3a",
+    "topic": "Kafka",
+    "questions": [
+      "How would you use a transactional producer for a consume-transform-produce workflow?",
+      "At-most-once vs at-least-once vs exactly-once: what do you guarantee?",
+      "What is static membership in Kafka consumers?",
+      "How would you rebalance traffic if one partition is much hotter than others?",
+      "What is cooperative rebalancing?"
+    ],
+    "followup": "How do records and sealed classes help domain modeling?",
+    "generated_at_utc": "2026-09-21T05:40:35.069604+00:00"
   }
 ]

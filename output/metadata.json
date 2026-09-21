@@ -1,24 +1,32 @@
 {
-  "topic": "Coding & DSA",
+  "topic": "Kafka",
   "question_count": 5,
-  "guide_link": "https://topmate.io/shubham_kamboj_06/new/Np6bUJzcPS",
-  "character_count": 923,
-  "hashtags": [
-    "#JavaDeveloper",
-    "#CoreJava",
-    "#SpringBoot",
-    "#SoftwareEngineering",
-    "#TechCareers"
+  "questions": [
+    "How would you use a transactional producer for a consume-transform-produce workflow?",
+    "At-most-once vs at-least-once vs exactly-once: what do you guarantee?",
+    "What is static membership in Kafka consumers?",
+    "How would you rebalance traffic if one partition is much hotter than others?",
+    "What is cooperative rebalancing?"
   ],
-  "fingerprint": "657d0fde35ffb39db16d",
-  "generated_at_utc": "2026-09-21T05:33:43.906893+00:00",
-  "history_size": 3,
+  "followup": "How do records and sealed classes help domain modeling?",
+  "guide_link": "https://topmate.io/shubham_kamboj_06/new/Np6bUJzcPS",
+  "character_count": 824,
+  "hashtags": [
+    "#JavaBackend",
+    "#SpringBoot",
+    "#Microservices",
+    "#SystemDesign",
+    "#InterviewTips"
+  ],
+  "fingerprint": "f80a3d35542a44e40f3a",
+  "generated_at_utc": "2026-09-21T05:40:35.069604+00:00",
+  "history_size": 4,
   "question_bank_size": 518,
-  "generator": "python-standard-library-template-engine-v2",
+  "generator": "python-standard-library-template-engine-v3",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7507673400597762048",
+  "linkedin_post_id": "urn:li:share:7507675126281289728",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 923,
-  "published_utf8_byte_count": 935
+  "published_character_count": 824,
+  "published_utf8_byte_count": 839
 }
