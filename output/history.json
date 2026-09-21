@@ -24,5 +24,18 @@
     ],
     "followup": "What happens when the database connection pool is exhausted?",
     "generated_at_utc": "2026-09-21T05:30:16.927422+00:00"
+  },
+  {
+    "fingerprint": "657d0fde35ffb39db16d",
+    "topic": "Coding & DSA",
+    "questions": [
+      "Find the missing number from an array containing values from 0 to n.",
+      "Design a data structure supporting insert, delete and getRandom in average O(1).",
+      "Find the longest subarray with equal numbers of zeroes and ones.",
+      "Solve the house robber problem using dynamic programming.",
+      "Implement BFS and DFS for a graph."
+    ],
+    "followup": "Design a returns workflow that updates inventory and refunds without conflicting updates.",
+    "generated_at_utc": "2026-09-21T05:33:43.906893+00:00"
   }
 ]

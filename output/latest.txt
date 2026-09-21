@@ -1,18 +1,18 @@
-🏗️ System design interviews are less about drawing boxes and more about explaining trade-offs.
+🚨 One Java interview question can quickly turn into a discussion about performance, concurrency and design.
 
-📝 INTERVIEW CHECKLIST
+If you can answer these clearly in under 60 seconds each, you are building a strong revision set:
 
-1. Design a distributed lock for scheduled jobs across multiple nodes.
-2. Design a system that protects a database during sudden traffic spikes.
-3. Design a service that provides consistent configuration to thousands of instances.
-4. Design a coupon service that prevents double redemption.
-5. Design a returns workflow that updates inventory and refunds without conflicting updates.
+1. Find the missing number from an array containing values from 0 to n.
+2. Design a data structure supporting insert, delete and getRandom in average O(1).
+3. Find the longest subarray with equal numbers of zeroes and ones.
+4. Solve the house robber problem using dynamic programming.
+5. Implement BFS and DFS for a graph.
 
-🔥 Then prepare for this:
-6. What happens when the database connection pool is exhausted?
+🎯 FOLLOW-UP
+6. Design a returns workflow that updates inventory and refunds without conflicting updates.
 
-📌 Do not memorize the answer. Explain the concept, the trade-off, the failure mode and a real production use case.
+📌 For senior roles, connect every answer to scalability, reliability, observability and the decision you would make.
 
 📘 You can get the complete guide from here: https://topmate.io/shubham_kamboj_06/new/Np6bUJzcPS
 
-#Java #SpringBoot #Microservices #BackendDevelopment #InterviewPreparation
+#JavaDeveloper #CoreJava #SpringBoot #SoftwareEngineering #TechCareers

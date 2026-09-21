@@ -1,18 +1,24 @@
 {
-  "topic": "System Design",
+  "topic": "Coding & DSA",
   "question_count": 5,
   "guide_link": "https://topmate.io/shubham_kamboj_06/new/Np6bUJzcPS",
-  "character_count": 881,
+  "character_count": 923,
   "hashtags": [
-    "#Java",
+    "#JavaDeveloper",
+    "#CoreJava",
     "#SpringBoot",
-    "#Microservices",
-    "#BackendDevelopment",
-    "#InterviewPreparation"
+    "#SoftwareEngineering",
+    "#TechCareers"
   ],
-  "fingerprint": "36374f2e8e62bd645e8c",
-  "generated_at_utc": "2026-09-21T05:30:16.927422+00:00",
-  "history_size": 2,
+  "fingerprint": "657d0fde35ffb39db16d",
+  "generated_at_utc": "2026-09-21T05:33:43.906893+00:00",
+  "history_size": 3,
   "question_bank_size": 518,
-  "generator": "python-standard-library-template-engine-v2"
+  "generator": "python-standard-library-template-engine-v2",
+  "published": true,
+  "linkedin_post_id": "urn:li:share:7507673400597762048",
+  "linkedin_status": 201,
+  "linkedin_api_version": "202609",
+  "published_character_count": 923,
+  "published_utf8_byte_count": 935
 }
