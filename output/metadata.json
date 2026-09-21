@@ -1,21 +1,18 @@
 {
-  "topic": "Java 8+ / Streams / Functional Programming",
+  "topic": "System Design",
   "question_count": 5,
   "guide_link": "https://topmate.io/shubham_kamboj_06/new/Np6bUJzcPS",
-  "character_count": 733,
+  "character_count": 881,
   "hashtags": [
     "#Java",
-    "#JavaProgramming",
-    "#BackendDeveloper",
-    "#SystemDesign",
-    "#CodingInterview"
+    "#SpringBoot",
+    "#Microservices",
+    "#BackendDevelopment",
+    "#InterviewPreparation"
   ],
-  "fingerprint": "114d6473b17547befcbe",
-  "generated_at_utc": "2026-09-20T07:36:07.181434+00:00",
-  "history_size": 1,
+  "fingerprint": "36374f2e8e62bd645e8c",
+  "generated_at_utc": "2026-09-21T05:30:16.927422+00:00",
+  "history_size": 2,
   "question_bank_size": 518,
-  "generator": "python-standard-library-template-engine-v2",
-  "published": true,
-  "linkedin_post_id": "urn:li:share:7507341812777340928",
-  "linkedin_status": 201
+  "generator": "python-standard-library-template-engine-v2"
 }

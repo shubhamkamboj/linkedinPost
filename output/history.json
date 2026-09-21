@@ -11,5 +11,18 @@
     ],
     "followup": "How would you detect a Redis hot key?",
     "generated_at_utc": "2026-09-20T07:36:07.181434+00:00"
+  },
+  {
+    "fingerprint": "36374f2e8e62bd645e8c",
+    "topic": "System Design",
+    "questions": [
+      "Design a distributed lock for scheduled jobs across multiple nodes.",
+      "Design a system that protects a database during sudden traffic spikes.",
+      "Design a service that provides consistent configuration to thousands of instances.",
+      "Design a coupon service that prevents double redemption.",
+      "Design a returns workflow that updates inventory and refunds without conflicting updates."
+    ],
+    "followup": "What happens when the database connection pool is exhausted?",
+    "generated_at_utc": "2026-09-21T05:30:16.927422+00:00"
   }
 ]
