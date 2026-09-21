@@ -6,8 +6,6 @@ import urllib.request
 
 
 API_BASE = "https://api.linkedin.com"
-
-# Current LinkedIn Marketing API version: September 2026
 DEFAULT_VERSION = "202609"
 
 
@@ -38,13 +36,13 @@ def _request(url, method="GET", headers=None, data=None):
 
 def get_member_urn(access_token: str) -> str:
     """
-    Get the authenticated LinkedIn member ID using
-    LinkedIn OpenID Connect userinfo endpoint.
+    Resolve the authenticated LinkedIn member using the OpenID Connect
+    userinfo endpoint.
 
     Required OAuth scopes:
-        openid
-        profile
-        w_member_social
+      - openid
+      - profile
+      - w_member_social
     """
 
     status, _, body = _request(
@@ -85,9 +83,25 @@ def create_text_post(
     version: str = DEFAULT_VERSION,
 ):
     """
-    Create and publish a text post on the authenticated
-    LinkedIn member's profile.
+    Create and publish a text post on the authenticated LinkedIn member's
+    personal profile.
+
+    The complete commentary is sent as-is. No truncation or character slicing
+    is performed in this function.
     """
+
+    if not commentary or not commentary.strip():
+        raise ValueError("Cannot publish an empty LinkedIn post.")
+
+    commentary = commentary.strip()
+
+    # Safety check. The generator is configured below this limit, but this
+    # protects the API call if another script creates output/latest.txt.
+    if len(commentary) > 3000:
+        raise ValueError(
+            f"LinkedIn commentary is {len(commentary)} characters; "
+            "refusing to publish above the 3000-character safety limit."
+        )
 
     payload = {
         "author": person_urn,
@@ -102,6 +116,19 @@ def create_text_post(
         "isReshareDisabledByAuthor": False,
     }
 
+    serialized_payload = json.dumps(
+        payload,
+        ensure_ascii=False,
+        separators=(",", ":"),
+    ).encode("utf-8")
+
+    print(
+        f"LinkedIn API payload prepared: "
+        f"commentary_chars={len(commentary)}, "
+        f"commentary_utf8_bytes={len(commentary.encode('utf-8'))}, "
+        f"payload_bytes={len(serialized_payload)}"
+    )
+
     headers = {
         "Authorization": f"Bearer {access_token}",
         "Content-Type": "application/json",
@@ -113,15 +140,13 @@ def create_text_post(
         f"{API_BASE}/rest/posts",
         method="POST",
         headers=headers,
-        data=json.dumps(
-            payload,
-            ensure_ascii=False,
-        ).encode("utf-8"),
+        data=serialized_payload,
     )
 
     post_id = (
         response_headers.get("x-restli-id")
         or response_headers.get("X-RestLi-Id")
+        or response_headers.get("X-Restli-Id")
     )
 
     if not post_id and body:
@@ -131,8 +156,20 @@ def create_text_post(
         except json.JSONDecodeError:
             pass
 
+    if status not in (200, 201):
+        raise RuntimeError(
+            f"LinkedIn post creation failed: HTTP {status}: {body}"
+        )
+
+    print(
+        f"LinkedIn API accepted post: "
+        f"status={status}, post_id={post_id or 'NOT_RETURNED'}"
+    )
+
     return {
         "status": status,
         "post_id": post_id,
         "response": body,
+        "commentary_char_count": len(commentary),
+        "commentary_utf8_byte_count": len(commentary.encode("utf-8")),
     }
