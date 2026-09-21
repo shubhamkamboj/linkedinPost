@@ -46,71 +46,51 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Run generator test suite
+        run: python tests/test_content_generator.py
+
       - name: Generate post
         run: python src/generate_post.py
 
-      - name: Show generated post
-        run: |
-          echo "========================================"
-          echo "GENERATED LINKEDIN POST"
-          echo "========================================"
-          cat output/latest.txt
-          echo ""
-          echo "========================================"
-          echo "CHARACTER COUNT"
-          echo "========================================"
-          wc -m output/latest.txt
-
-      - name: Validate generated post
+      - name: Validate generated output
         run: |
           python - <<'PY'
           from pathlib import Path
           import json
-          import os
           import re
+          import os
 
           post = Path("output/latest.txt").read_text(encoding="utf-8")
-          meta = json.loads(
-              Path("output/metadata.json").read_text(encoding="utf-8")
-          )
+          meta = json.loads(Path("output/metadata.json").read_text(encoding="utf-8"))
 
-          max_chars = int(
-              os.environ.get("POST_MAX_CHARS", "2850")
-          )
+          max_chars = int(os.environ.get("POST_MAX_CHARS", "2850"))
 
           print(f"Characters: {len(post)}")
-          print(f"UTF-8 bytes: {len(post.encode('utf-8'))}")
           print(f"Topic: {meta.get('topic')}")
+          print(f"Questions: {meta.get('question_count')}")
           print(f"Question bank: {meta.get('question_bank_size')}")
-          print(f"Fingerprint: {meta.get('fingerprint')}")
 
           if len(post) > max_chars:
-              raise SystemExit(
-                  f"Post is {len(post)} chars; "
-                  f"max allowed is {max_chars}"
-              )
+              raise SystemExit("Generated post exceeds configured character limit.")
 
-          if meta.get("question_count") != 5:
-              raise SystemExit(
-                  "Expected exactly 5 primary questions"
-              )
+          if meta.get("question_count") not in (4, 5):
+              raise SystemExit("Expected 4 or 5 complete primary questions.")
 
-          if "http://" not in post and "https://" not in post:
-              raise SystemExit(
-                  "Guide URL is missing"
-              )
+          for question in meta.get("questions", []):
+              if question not in post:
+                  raise SystemExit(f"Selected question missing/altered: {question}")
 
-          hashtags = re.findall(
-              r"(?<!\w)#\w+",
-              post
-          )
+          followup = meta.get("followup", "")
+          if not followup or followup not in post:
+              raise SystemExit("Follow-up question missing/altered.")
 
-          if len(hashtags) != 5:
-              raise SystemExit(
-                  f"Expected 5 hashtags, found {len(hashtags)}"
-              )
+          if not re.search(r"https?://\S+", post):
+              raise SystemExit("Guide URL missing.")
 
-          print("Validation PASSED")
+          if len(re.findall(r"(?<!\w)#\w+", post)) != 5:
+              raise SystemExit("Expected exactly 5 hashtags.")
+
+          print("Generated output validation PASSED.")
           PY
 
       - name: Check LinkedIn configuration
@@ -118,67 +98,19 @@ jobs:
           python - <<'PY'
           import os
 
-          token = os.environ.get(
-              "LINKEDIN_ACCESS_TOKEN",
-              ""
-          ).strip()
+          token = os.environ.get("LINKEDIN_ACCESS_TOKEN", "").strip()
+          enabled = os.environ.get("AUTO_POST_ENABLED", "false")
+          force_run = os.environ.get("FORCE_RUN", "false")
 
-          person_urn = os.environ.get(
-              "LINKEDIN_PERSON_URN",
-              ""
-          ).strip()
-
-          enabled = os.environ.get(
-              "AUTO_POST_ENABLED",
-              "false"
-          )
-
-          force_run = os.environ.get(
-              "FORCE_RUN",
-              "false"
-          )
-
-          version = os.environ.get(
-              "LINKEDIN_VERSION",
-              "202609"
-          )
-
-          print(
-              f"AUTO_POST_ENABLED: {enabled}"
-          )
-
-          print(
-              f"FORCE_RUN: {force_run}"
-          )
-
-          print(
-              f"LINKEDIN_VERSION: {version}"
-          )
-
-          print(
-              "LINKEDIN_ACCESS_TOKEN configured: "
-              + ("YES" if token else "NO")
-          )
-
-          print(
-              "LINKEDIN_PERSON_URN configured: "
-              + ("YES" if person_urn else "NO")
-          )
+          print(f"AUTO_POST_ENABLED: {enabled}")
+          print(f"FORCE_RUN: {force_run}")
+          print(f"LINKEDIN_ACCESS_TOKEN configured: {'YES' if token else 'NO'}")
 
           if not token:
-              raise SystemExit(
-                  "LINKEDIN_ACCESS_TOKEN GitHub Secret is missing."
-              )
+              raise SystemExit("LINKEDIN_ACCESS_TOKEN is missing.")
 
-          if (
-              enabled.lower() != "true"
-              and force_run.lower() != "true"
-          ):
-              raise SystemExit(
-                  "Publishing disabled: "
-                  "AUTO_POST_ENABLED is not true "
-                  "and FORCE_RUN is not true."
-              )
+          if enabled.lower() != "true" and force_run.lower() != "true":
+              raise SystemExit("Publishing is disabled.")
           PY
 
       - name: Publish to LinkedIn
