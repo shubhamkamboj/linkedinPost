@@ -1,8 +1,10 @@
 name: Daily Java LinkedIn Post
+
 on:
   schedule:
     - cron: "10 8 * * *"
       timezone: "Asia/Kolkata"
+
   workflow_dispatch:
     inputs:
       force_run:
@@ -10,54 +12,185 @@ on:
         required: false
         default: "false"
         type: boolean
+
 permissions:
   contents: write
+
 concurrency:
   group: java-linkedin-daily-post
   cancel-in-progress: false
+
 jobs:
   publish:
-    runs-on: ubuntu-latest
     if: >-
       (github.event_name == 'workflow_dispatch' && inputs.force_run == true)
       ||
       (github.event_name == 'schedule' && vars.AUTO_POST_ENABLED == 'true')
+
+    runs-on: ubuntu-latest
+
     env:
       AUTO_POST_ENABLED: ${{ vars.AUTO_POST_ENABLED || 'false' }}
+      FORCE_RUN: ${{ inputs.force_run || 'false' }}
       POST_MAX_CHARS: ${{ vars.POST_MAX_CHARS || '2850' }}
       LINKEDIN_VERSION: ${{ vars.LINKEDIN_VERSION || '202609' }}
       LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
       LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
       - name: Generate post
         run: python src/generate_post.py
+
+      - name: Show generated post
+        run: |
+          echo "========================================"
+          echo "GENERATED LINKEDIN POST"
+          echo "========================================"
+          cat output/latest.txt
+          echo ""
+          echo "========================================"
+          echo "CHARACTER COUNT"
+          echo "========================================"
+          wc -m output/latest.txt
+
       - name: Validate generated post
         run: |
           python - <<'PY'
           from pathlib import Path
-          import json, os, re
-          post=Path('output/latest.txt').read_text(encoding='utf-8')
-          meta=json.loads(Path('output/metadata.json').read_text(encoding='utf-8'))
-          limit=int(os.environ.get('POST_MAX_CHARS','2850'))
-          if len(post)>limit: raise SystemExit(f'Post is {len(post)} chars; max is {limit}')
-          if meta.get('question_count')!=5: raise SystemExit('Expected exactly 5 primary questions')
-          if not re.search(r'https?://',post): raise SystemExit('Guide URL missing')
-          if len(re.findall(r'(?<!\w)#\w+',post))!=5: raise SystemExit('Expected exactly 5 hashtags')
-          print(f'Validation passed: {len(post)} chars, 5 questions, 5 hashtags.')
+          import json
+          import os
+          import re
+
+          post = Path("output/latest.txt").read_text(encoding="utf-8")
+          meta = json.loads(
+              Path("output/metadata.json").read_text(encoding="utf-8")
+          )
+
+          max_chars = int(
+              os.environ.get("POST_MAX_CHARS", "2850")
+          )
+
+          print(f"Characters: {len(post)}")
+          print(f"UTF-8 bytes: {len(post.encode('utf-8'))}")
+          print(f"Topic: {meta.get('topic')}")
+          print(f"Question bank: {meta.get('question_bank_size')}")
+          print(f"Fingerprint: {meta.get('fingerprint')}")
+
+          if len(post) > max_chars:
+              raise SystemExit(
+                  f"Post is {len(post)} chars; "
+                  f"max allowed is {max_chars}"
+              )
+
+          if meta.get("question_count") != 5:
+              raise SystemExit(
+                  "Expected exactly 5 primary questions"
+              )
+
+          if "http://" not in post and "https://" not in post:
+              raise SystemExit(
+                  "Guide URL is missing"
+              )
+
+          hashtags = re.findall(
+              r"(?<!\w)#\w+",
+              post
+          )
+
+          if len(hashtags) != 5:
+              raise SystemExit(
+                  f"Expected 5 hashtags, found {len(hashtags)}"
+              )
+
+          print("Validation PASSED")
           PY
+
+      - name: Check LinkedIn configuration
+        run: |
+          python - <<'PY'
+          import os
+
+          token = os.environ.get(
+              "LINKEDIN_ACCESS_TOKEN",
+              ""
+          ).strip()
+
+          person_urn = os.environ.get(
+              "LINKEDIN_PERSON_URN",
+              ""
+          ).strip()
+
+          enabled = os.environ.get(
+              "AUTO_POST_ENABLED",
+              "false"
+          )
+
+          force_run = os.environ.get(
+              "FORCE_RUN",
+              "false"
+          )
+
+          version = os.environ.get(
+              "LINKEDIN_VERSION",
+              "202609"
+          )
+
+          print(
+              f"AUTO_POST_ENABLED: {enabled}"
+          )
+
+          print(
+              f"FORCE_RUN: {force_run}"
+          )
+
+          print(
+              f"LINKEDIN_VERSION: {version}"
+          )
+
+          print(
+              "LINKEDIN_ACCESS_TOKEN configured: "
+              + ("YES" if token else "NO")
+          )
+
+          print(
+              "LINKEDIN_PERSON_URN configured: "
+              + ("YES" if person_urn else "NO")
+          )
+
+          if not token:
+              raise SystemExit(
+                  "LINKEDIN_ACCESS_TOKEN GitHub Secret is missing."
+              )
+
+          if (
+              enabled.lower() != "true"
+              and force_run.lower() != "true"
+          ):
+              raise SystemExit(
+                  "Publishing disabled: "
+                  "AUTO_POST_ENABLED is not true "
+                  "and FORCE_RUN is not true."
+              )
+          PY
+
       - name: Publish to LinkedIn
         run: python src/post_to_linkedin.py
+
       - name: Commit generated post and metadata
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add output/
+
           if git diff --cached --quiet; then
             echo "No output changes to commit."
           else
