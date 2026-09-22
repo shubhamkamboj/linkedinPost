@@ -63,5 +63,18 @@
     ],
     "followup": "Error rate increases only after cache expiry. What stampede pattern could be occurring?",
     "generated_at_utc": "2026-09-22T07:11:52.529875+00:00"
+  },
+  {
+    "fingerprint": "4e77689eccadf8d5ec0e",
+    "topic": "Multithreading & Concurrency",
+    "questions": [
+      "How does ConcurrentHashMap achieve concurrency without locking the whole map?",
+      "What happens when Thread.stop is used and why is it unsafe?",
+      "What is Exchanger and where could it be used?",
+      "ArrayBlockingQueue vs LinkedBlockingQueue: what trade-offs matter?",
+      "volatile vs synchronized: what problem does each solve?"
+    ],
+    "followup": "How would you scan uploaded files for malware safely?",
+    "generated_at_utc": "2026-09-22T07:55:56.576697+00:00"
   }
 ]
