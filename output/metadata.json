@@ -1,32 +1,32 @@
 {
-  "topic": "Kafka",
+  "topic": "Core Java",
   "question_count": 5,
   "questions": [
-    "How would you use a transactional producer for a consume-transform-produce workflow?",
-    "At-most-once vs at-least-once vs exactly-once: what do you guarantee?",
-    "What is static membership in Kafka consumers?",
-    "How would you rebalance traffic if one partition is much hotter than others?",
-    "What is cooperative rebalancing?"
+    "What is the difference between an enum singleton and a static singleton?",
+    "When would WeakHashMap be useful?",
+    "How would you make a singleton safe under serialization and reflection?",
+    "How does PriorityQueue work internally?",
+    "How does LinkedHashMap maintain insertion or access order?"
   ],
-  "followup": "How do records and sealed classes help domain modeling?",
+  "followup": "Error rate increases only after cache expiry. What stampede pattern could be occurring?",
   "guide_link": "https://topmate.io/shubham_kamboj_06/new/Np6bUJzcPS",
-  "character_count": 824,
+  "character_count": 854,
   "hashtags": [
-    "#JavaBackend",
+    "#Java",
+    "#Concurrency",
     "#SpringBoot",
-    "#Microservices",
-    "#SystemDesign",
-    "#InterviewTips"
+    "#BackendDeveloper",
+    "#InterviewPrep"
   ],
-  "fingerprint": "f80a3d35542a44e40f3a",
-  "generated_at_utc": "2026-09-21T05:40:35.069604+00:00",
-  "history_size": 4,
+  "fingerprint": "337b6e39515a677de288",
+  "generated_at_utc": "2026-09-22T07:11:52.529875+00:00",
+  "history_size": 5,
   "question_bank_size": 518,
   "generator": "python-standard-library-template-engine-v3",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7507675126281289728",
+  "linkedin_post_id": "urn:li:share:7508060487394246656",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 824,
-  "published_utf8_byte_count": 839
+  "published_character_count": 854,
+  "published_utf8_byte_count": 863
 }

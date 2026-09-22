@@ -50,5 +50,18 @@
     ],
     "followup": "How do records and sealed classes help domain modeling?",
     "generated_at_utc": "2026-09-21T05:40:35.069604+00:00"
+  },
+  {
+    "fingerprint": "337b6e39515a677de288",
+    "topic": "Core Java",
+    "questions": [
+      "What is the difference between an enum singleton and a static singleton?",
+      "When would WeakHashMap be useful?",
+      "How would you make a singleton safe under serialization and reflection?",
+      "How does PriorityQueue work internally?",
+      "How does LinkedHashMap maintain insertion or access order?"
+    ],
+    "followup": "Error rate increases only after cache expiry. What stampede pattern could be occurring?",
+    "generated_at_utc": "2026-09-22T07:11:52.529875+00:00"
   }
 ]
