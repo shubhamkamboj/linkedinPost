@@ -76,5 +76,18 @@
     ],
     "followup": "How would you scan uploaded files for malware safely?",
     "generated_at_utc": "2026-09-22T07:55:56.576697+00:00"
+  },
+  {
+    "fingerprint": "e43998622c2ff00213e7",
+    "topic": "Project Discussion / Senior-Level",
+    "questions": [
+      "What would you change if the system had 10x the current traffic?",
+      "Describe one production issue you owned and how you fixed it.",
+      "Why did you choose your messaging technology over a synchronous API?",
+      "How did you handle data migration with zero or minimal downtime?",
+      "How did you design graceful degradation?"
+    ],
+    "followup": "How would you avoid lazy-loading database calls from JSON serialization?",
+    "generated_at_utc": "2026-09-23T01:30:05.820575+00:00"
   }
 ]

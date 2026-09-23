@@ -1,32 +1,32 @@
 {
-  "topic": "Multithreading & Concurrency",
+  "topic": "Project Discussion / Senior-Level",
   "question_count": 5,
   "questions": [
-    "How does ConcurrentHashMap achieve concurrency without locking the whole map?",
-    "What happens when Thread.stop is used and why is it unsafe?",
-    "What is Exchanger and where could it be used?",
-    "ArrayBlockingQueue vs LinkedBlockingQueue: what trade-offs matter?",
-    "volatile vs synchronized: what problem does each solve?"
+    "What would you change if the system had 10x the current traffic?",
+    "Describe one production issue you owned and how you fixed it.",
+    "Why did you choose your messaging technology over a synchronous API?",
+    "How did you handle data migration with zero or minimal downtime?",
+    "How did you design graceful degradation?"
   ],
-  "followup": "How would you scan uploaded files for malware safely?",
+  "followup": "How would you avoid lazy-loading database calls from JSON serialization?",
   "guide_link": "https://topmate.io/shubham_kamboj_06/new/Np6bUJzcPS",
-  "character_count": 828,
+  "character_count": 820,
   "hashtags": [
     "#Java",
-    "#Concurrency",
     "#SpringBoot",
-    "#BackendDeveloper",
-    "#InterviewPrep"
+    "#Microservices",
+    "#BackendDevelopment",
+    "#InterviewPreparation"
   ],
-  "fingerprint": "4e77689eccadf8d5ec0e",
-  "generated_at_utc": "2026-09-22T07:55:56.576697+00:00",
-  "history_size": 6,
+  "fingerprint": "e43998622c2ff00213e7",
+  "generated_at_utc": "2026-09-23T01:30:05.820575+00:00",
+  "history_size": 7,
   "question_bank_size": 518,
   "generator": "python-standard-library-template-engine-v3",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7508071576966418432",
+  "linkedin_post_id": "urn:li:share:7508336865091940352",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 828,
-  "published_utf8_byte_count": 837
+  "published_character_count": 820,
+  "published_utf8_byte_count": 835
 }
