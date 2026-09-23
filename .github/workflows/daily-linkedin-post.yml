@@ -1,10 +1,12 @@
 name: Daily Java LinkedIn Post
 
 on:
+  # Every day at 06:00 AM Asia/Kolkata (IST)
   schedule:
-    - cron: "10 8 * * *"
+    - cron: "0 6 * * *"
       timezone: "Asia/Kolkata"
 
+  # Manual testing
   workflow_dispatch:
     inputs:
       force_run:
@@ -38,84 +40,254 @@ jobs:
       LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
 
     steps:
+
+      # ---------------------------------------------------------
+      # 1. Checkout repository
+      # ---------------------------------------------------------
       - name: Checkout
         uses: actions/checkout@v4
 
+      # ---------------------------------------------------------
+      # 2. Show schedule / runner information
+      # ---------------------------------------------------------
+      - name: Show schedule configuration
+        run: |
+          echo "========================================"
+          echo "DAILY LINKEDIN POST CONFIGURATION"
+          echo "========================================"
+          echo "Target timezone : Asia/Kolkata"
+          echo "Target time     : 06:00 AM IST"
+          echo "Current UTC     : $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+          echo "Runner time     : $(date '+%Y-%m-%d %H:%M:%S %Z')"
+          echo "========================================"
+
+      # ---------------------------------------------------------
+      # 3. Python
+      # ---------------------------------------------------------
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
+      # ---------------------------------------------------------
+      # 4. Run complete generator test suite
+      # ---------------------------------------------------------
       - name: Run generator test suite
-        run: python tests/test_content_generator.py
+        run: |
+          python tests/test_content_generator.py
 
+      # ---------------------------------------------------------
+      # 5. Generate today's post
+      # ---------------------------------------------------------
       - name: Generate post
-        run: python src/generate_post.py
+        run: |
+          python src/generate_post.py
 
+      # ---------------------------------------------------------
+      # 6. Show generated post
+      # ---------------------------------------------------------
+      - name: Show generated post
+        run: |
+          echo "========================================"
+          echo "GENERATED LINKEDIN POST"
+          echo "========================================"
+
+          cat output/latest.txt
+
+          echo ""
+          echo "========================================"
+          echo "POST CHARACTER COUNT"
+          echo "========================================"
+
+          wc -m output/latest.txt
+
+      # ---------------------------------------------------------
+      # 7. Validate generated post
+      # ---------------------------------------------------------
       - name: Validate generated output
         run: |
           python - <<'PY'
           from pathlib import Path
           import json
-          import re
           import os
+          import re
 
-          post = Path("output/latest.txt").read_text(encoding="utf-8")
-          meta = json.loads(Path("output/metadata.json").read_text(encoding="utf-8"))
+          post = Path("output/latest.txt").read_text(
+              encoding="utf-8"
+          )
 
-          max_chars = int(os.environ.get("POST_MAX_CHARS", "2850"))
+          metadata = json.loads(
+              Path("output/metadata.json").read_text(
+                  encoding="utf-8"
+              )
+          )
 
-          print(f"Characters: {len(post)}")
-          print(f"Topic: {meta.get('topic')}")
-          print(f"Questions: {meta.get('question_count')}")
-          print(f"Question bank: {meta.get('question_bank_size')}")
+          max_chars = int(
+              os.environ.get(
+                  "POST_MAX_CHARS",
+                  "2850"
+              )
+          )
 
+          print("========================================")
+          print("POST VALIDATION")
+          print("========================================")
+
+          print(f"Characters      : {len(post)}")
+          print(f"UTF-8 bytes     : {len(post.encode('utf-8'))}")
+          print(f"Topic           : {metadata.get('topic')}")
+          print(f"Questions       : {metadata.get('question_count')}")
+          print(f"Question bank   : {metadata.get('question_bank_size')}")
+          print(f"Fingerprint     : {metadata.get('fingerprint')}")
+
+          # Character limit
           if len(post) > max_chars:
-              raise SystemExit("Generated post exceeds configured character limit.")
+              raise SystemExit(
+                  f"Post is {len(post)} characters. "
+                  f"Maximum allowed is {max_chars}."
+              )
 
-          if meta.get("question_count") not in (4, 5):
-              raise SystemExit("Expected 4 or 5 complete primary questions.")
+          # Question count
+          if metadata.get("question_count") not in (4, 5):
+              raise SystemExit(
+                  "Expected 4 or 5 complete primary questions."
+              )
 
-          for question in meta.get("questions", []):
+          # Exact selected questions
+          for question in metadata.get("questions", []):
               if question not in post:
-                  raise SystemExit(f"Selected question missing/altered: {question}")
+                  raise SystemExit(
+                      "Selected question missing or modified:\n"
+                      + question
+                  )
 
-          followup = meta.get("followup", "")
-          if not followup or followup not in post:
-              raise SystemExit("Follow-up question missing/altered.")
+          # Exact follow-up
+          followup = metadata.get("followup", "")
 
-          if not re.search(r"https?://\S+", post):
-              raise SystemExit("Guide URL missing.")
+          if not followup:
+              raise SystemExit(
+                  "Follow-up question is missing from metadata."
+              )
 
-          if len(re.findall(r"(?<!\w)#\w+", post)) != 5:
-              raise SystemExit("Expected exactly 5 hashtags.")
+          if followup not in post:
+              raise SystemExit(
+                  "Follow-up question missing or modified."
+              )
 
-          print("Generated output validation PASSED.")
+          # URL
+          if not re.search(
+              r"https?://\S+",
+              post,
+              re.IGNORECASE
+          ):
+              raise SystemExit(
+                  "Guide URL is missing."
+              )
+
+          # Exactly five hashtags
+          hashtags = re.findall(
+              r"(?<!\w)#\w+",
+              post
+          )
+
+          if len(hashtags) != 5:
+              raise SystemExit(
+                  f"Expected exactly 5 hashtags. "
+                  f"Found {len(hashtags)}."
+              )
+
+          print("")
+          print("VALIDATION PASSED")
+          print("========================================")
           PY
 
+      # ---------------------------------------------------------
+      # 8. Check LinkedIn configuration
+      # ---------------------------------------------------------
       - name: Check LinkedIn configuration
         run: |
           python - <<'PY'
           import os
 
-          token = os.environ.get("LINKEDIN_ACCESS_TOKEN", "").strip()
-          enabled = os.environ.get("AUTO_POST_ENABLED", "false")
-          force_run = os.environ.get("FORCE_RUN", "false")
+          token = os.environ.get(
+              "LINKEDIN_ACCESS_TOKEN",
+              ""
+          ).strip()
 
-          print(f"AUTO_POST_ENABLED: {enabled}")
-          print(f"FORCE_RUN: {force_run}")
-          print(f"LINKEDIN_ACCESS_TOKEN configured: {'YES' if token else 'NO'}")
+          person_urn = os.environ.get(
+              "LINKEDIN_PERSON_URN",
+              ""
+          ).strip()
+
+          enabled = os.environ.get(
+              "AUTO_POST_ENABLED",
+              "false"
+          )
+
+          force_run = os.environ.get(
+              "FORCE_RUN",
+              "false"
+          )
+
+          version = os.environ.get(
+              "LINKEDIN_VERSION",
+              "202609"
+          )
+
+          print("========================================")
+          print("LINKEDIN CONFIGURATION")
+          print("========================================")
+
+          print(
+              f"AUTO_POST_ENABLED          : {enabled}"
+          )
+
+          print(
+              f"FORCE_RUN                  : {force_run}"
+          )
+
+          print(
+              f"LINKEDIN_VERSION           : {version}"
+          )
+
+          print(
+              "LINKEDIN_ACCESS_TOKEN      : "
+              + ("CONFIGURED" if token else "MISSING")
+          )
+
+          print(
+              "LINKEDIN_PERSON_URN        : "
+              + ("CONFIGURED" if person_urn else "AUTO-DETECT")
+          )
 
           if not token:
-              raise SystemExit("LINKEDIN_ACCESS_TOKEN is missing.")
+              raise SystemExit(
+                  "LINKEDIN_ACCESS_TOKEN GitHub Secret is missing."
+              )
 
-          if enabled.lower() != "true" and force_run.lower() != "true":
-              raise SystemExit("Publishing is disabled.")
+          if (
+              enabled.lower() != "true"
+              and force_run.lower() != "true"
+          ):
+              raise SystemExit(
+                  "Publishing disabled. "
+                  "Set AUTO_POST_ENABLED=true "
+                  "or use force_run=true."
+              )
+
+          print("LinkedIn configuration PASSED.")
           PY
 
+      # ---------------------------------------------------------
+      # 9. Publish
+      # ---------------------------------------------------------
       - name: Publish to LinkedIn
-        run: python src/post_to_linkedin.py
+        run: |
+          python src/post_to_linkedin.py
 
+      # ---------------------------------------------------------
+      # 10. Commit generated output
+      # ---------------------------------------------------------
       - name: Commit generated post and metadata
         run: |
           git config user.name "github-actions[bot]"
