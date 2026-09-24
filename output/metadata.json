@@ -2,31 +2,31 @@
   "topic": "Project Discussion / Senior-Level",
   "question_count": 5,
   "questions": [
-    "What would you change if the system had 10x the current traffic?",
-    "Describe one production issue you owned and how you fixed it.",
-    "Why did you choose your messaging technology over a synchronous API?",
-    "How did you handle data migration with zero or minimal downtime?",
-    "How did you design graceful degradation?"
+    "How did you review an architecture proposed by another team?",
+    "How did you verify that a performance fix actually worked?",
+    "What would happen if Redis became unavailable?",
+    "How did you separate business logic from infrastructure concerns?",
+    "How did you recover from a production incident?"
   ],
-  "followup": "How would you avoid lazy-loading database calls from JSON serialization?",
+  "followup": "How would you expose custom metrics using Micrometer?",
   "guide_link": "https://topmate.io/shubham_kamboj_06/new/Np6bUJzcPS",
-  "character_count": 820,
+  "character_count": 792,
   "hashtags": [
     "#Java",
-    "#SpringBoot",
-    "#Microservices",
-    "#BackendDevelopment",
-    "#InterviewPreparation"
+    "#JavaProgramming",
+    "#BackendDeveloper",
+    "#SystemDesign",
+    "#CodingInterview"
   ],
-  "fingerprint": "e43998622c2ff00213e7",
-  "generated_at_utc": "2026-09-23T01:30:05.820575+00:00",
-  "history_size": 7,
+  "fingerprint": "57cecd7307c42c908aed",
+  "generated_at_utc": "2026-09-24T02:54:50.272860+00:00",
+  "history_size": 8,
   "question_bank_size": 518,
   "generator": "python-standard-library-template-engine-v3",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7508336865091940352",
+  "linkedin_post_id": "urn:li:share:7508720577969573888",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 820,
-  "published_utf8_byte_count": 835
+  "published_character_count": 792,
+  "published_utf8_byte_count": 807
 }
