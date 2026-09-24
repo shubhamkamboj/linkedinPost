@@ -102,5 +102,18 @@
     ],
     "followup": "How would you expose custom metrics using Micrometer?",
     "generated_at_utc": "2026-09-24T02:54:50.272860+00:00"
+  },
+  {
+    "fingerprint": "3b0084afca7cc4474d11",
+    "topic": "Microservices",
+    "questions": [
+      "What does an API Gateway actually do?",
+      "How would you prevent cross-tenant data leakage?",
+      "When is a service mesh unnecessary complexity?",
+      "When can asynchronous messaging make a system harder to reason about?",
+      "Why should every downstream call have a timeout?"
+    ],
+    "followup": "Design a delayed-message system for scheduled tasks.",
+    "generated_at_utc": "2026-09-24T05:11:09.371083+00:00"
   }
 ]

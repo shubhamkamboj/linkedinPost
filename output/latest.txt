@@ -1,15 +1,15 @@
-🎯 Your project discussion can decide how deep the interviewer goes into architecture.
+💡 Knowing the syntax is only the beginning. The follow-up is where interviews get interesting.
 
-🧠 PROJECT DISCUSSION / SENIOR-LEVEL
+📝 QUICK INTERVIEW CHECKLIST
 
-1. How did you review an architecture proposed by another team?
-2. How did you verify that a performance fix actually worked?
-3. What would happen if Redis became unavailable?
-4. How did you separate business logic from infrastructure concerns?
-5. How did you recover from a production incident?
+1. What does an API Gateway actually do?
+2. How would you prevent cross-tenant data leakage?
+3. When is a service mesh unnecessary complexity?
+4. When can asynchronous messaging make a system harder to reason about?
+5. Why should every downstream call have a timeout?
 
-🎯 FOLLOW-UP SCENARIO
-6. How would you expose custom metrics using Micrometer?
+🚨 EXPECT A FOLLOW-UP ON THIS
+6. Design a delayed-message system for scheduled tasks.
 
 📌 The interviewer may start with one question and keep drilling deeper. Practice the follow-up, not just the first answer.
 

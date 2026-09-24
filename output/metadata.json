@@ -1,16 +1,16 @@
 {
-  "topic": "Project Discussion / Senior-Level",
+  "topic": "Microservices",
   "question_count": 5,
   "questions": [
-    "How did you review an architecture proposed by another team?",
-    "How did you verify that a performance fix actually worked?",
-    "What would happen if Redis became unavailable?",
-    "How did you separate business logic from infrastructure concerns?",
-    "How did you recover from a production incident?"
+    "What does an API Gateway actually do?",
+    "How would you prevent cross-tenant data leakage?",
+    "When is a service mesh unnecessary complexity?",
+    "When can asynchronous messaging make a system harder to reason about?",
+    "Why should every downstream call have a timeout?"
   ],
-  "followup": "How would you expose custom metrics using Micrometer?",
+  "followup": "Design a delayed-message system for scheduled tasks.",
   "guide_link": "https://topmate.io/shubham_kamboj_06/new/Np6bUJzcPS",
-  "character_count": 792,
+  "character_count": 772,
   "hashtags": [
     "#Java",
     "#JavaProgramming",
@@ -18,15 +18,15 @@
     "#SystemDesign",
     "#CodingInterview"
   ],
-  "fingerprint": "57cecd7307c42c908aed",
-  "generated_at_utc": "2026-09-24T02:54:50.272860+00:00",
-  "history_size": 8,
+  "fingerprint": "3b0084afca7cc4474d11",
+  "generated_at_utc": "2026-09-24T05:11:09.371083+00:00",
+  "history_size": 9,
   "question_bank_size": 518,
   "generator": "python-standard-library-template-engine-v3",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7508720577969573888",
+  "linkedin_post_id": "urn:li:share:7508754883156553728",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 792,
-  "published_utf8_byte_count": 807
+  "published_character_count": 772,
+  "published_utf8_byte_count": 787
 }
