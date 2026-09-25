@@ -1,16 +1,16 @@
 {
-  "topic": "Microservices",
+  "topic": "Coding & DSA",
   "question_count": 5,
   "questions": [
-    "What does an API Gateway actually do?",
-    "How would you prevent cross-tenant data leakage?",
-    "When is a service mesh unnecessary complexity?",
-    "When can asynchronous messaging make a system harder to reason about?",
-    "Why should every downstream call have a timeout?"
+    "Find a pair of numbers whose sum equals a target.",
+    "Merge overlapping intervals and return the minimum number of meeting rooms.",
+    "Find autocomplete suggestions using a trie.",
+    "Implement an LRU cache and explain the data structures.",
+    "Find the number of islands in a binary grid."
   ],
-  "followup": "Design a delayed-message system for scheduled tasks.",
+  "followup": "Where should authorization decisions happen: gateway, service, or both?",
   "guide_link": "https://topmate.io/shubham_kamboj_06/new/Np6bUJzcPS",
-  "character_count": 772,
+  "character_count": 771,
   "hashtags": [
     "#Java",
     "#JavaProgramming",
@@ -18,15 +18,15 @@
     "#SystemDesign",
     "#CodingInterview"
   ],
-  "fingerprint": "3b0084afca7cc4474d11",
-  "generated_at_utc": "2026-09-24T05:11:09.371083+00:00",
-  "history_size": 9,
+  "fingerprint": "9f1370d14025f01c61e1",
+  "generated_at_utc": "2026-09-25T00:43:50.328636+00:00",
+  "history_size": 10,
   "question_bank_size": 518,
   "generator": "python-standard-library-template-engine-v3",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7508754883156553728",
+  "linkedin_post_id": "urn:li:share:7509049999641497600",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 772,
-  "published_utf8_byte_count": 787
+  "published_character_count": 771,
+  "published_utf8_byte_count": 785
 }

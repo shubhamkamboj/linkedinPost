@@ -115,5 +115,18 @@
     ],
     "followup": "Design a delayed-message system for scheduled tasks.",
     "generated_at_utc": "2026-09-24T05:11:09.371083+00:00"
+  },
+  {
+    "fingerprint": "9f1370d14025f01c61e1",
+    "topic": "Coding & DSA",
+    "questions": [
+      "Find a pair of numbers whose sum equals a target.",
+      "Merge overlapping intervals and return the minimum number of meeting rooms.",
+      "Find autocomplete suggestions using a trie.",
+      "Implement an LRU cache and explain the data structures.",
+      "Find the number of islands in a binary grid."
+    ],
+    "followup": "Where should authorization decisions happen: gateway, service, or both?",
+    "generated_at_utc": "2026-09-25T00:43:50.328636+00:00"
   }
 ]
