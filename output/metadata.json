@@ -1,26 +1,26 @@
 {
-  "topic": "Multithreading & Concurrency",
-  "content_format": "concept",
+  "topic": "Redis / Caching / Performance",
+  "content_format": "production",
   "question_count": 0,
   "questions": [],
-  "guide_link": "https://topmate.io/shubham_kamboj_06/new/Np6bUJzcPS",
-  "character_count": 1516,
+  "guide_link": "https://tinyurl.com/ybd3yfv2",
+  "character_count": 1261,
   "hashtags": [
-    "#Java",
-    "#JavaProgramming",
-    "#BackendDeveloper",
-    "#SystemDesign",
-    "#SoftwareEngineering"
+    "#JavaDeveloper",
+    "#Kafka",
+    "#Microservices",
+    "#BackendEngineering",
+    "#JavaInterview"
   ],
-  "fingerprint": "c211235fe7c96c2b6748",
-  "generated_at_utc": "2026-09-25T11:25:40.720397+00:00",
-  "history_size": 12,
+  "fingerprint": "99b139e0439f218586c4",
+  "generated_at_utc": "2026-09-25T11:36:37.849731+00:00",
+  "history_size": 13,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v4",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7509211522745700352",
+  "linkedin_post_id": "urn:li:share:7509214279011602432",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1516,
-  "published_utf8_byte_count": 1562
+  "published_character_count": 1261,
+  "published_utf8_byte_count": 1334
 }

@@ -148,5 +148,12 @@
     "content_format": "concept",
     "questions": [],
     "generated_at_utc": "2026-09-25T11:25:40.720397+00:00"
+  },
+  {
+    "fingerprint": "99b139e0439f218586c4",
+    "topic": "Redis / Caching / Performance",
+    "content_format": "production",
+    "questions": [],
+    "generated_at_utc": "2026-09-25T11:36:37.849731+00:00"
   }
 ]
