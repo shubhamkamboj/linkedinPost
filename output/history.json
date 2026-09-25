@@ -141,5 +141,12 @@
     ],
     "followup": "What is a covering index?",
     "generated_at_utc": "2026-09-25T05:13:29.078407+00:00"
+  },
+  {
+    "fingerprint": "c211235fe7c96c2b6748",
+    "topic": "Multithreading & Concurrency",
+    "content_format": "concept",
+    "questions": [],
+    "generated_at_utc": "2026-09-25T11:25:40.720397+00:00"
   }
 ]

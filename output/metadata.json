@@ -1,32 +1,26 @@
 {
-  "topic": "Spring Boot",
-  "question_count": 5,
-  "questions": [
-    "What happens with a checked exception inside a @Transactional method?",
-    "How does @Transactional work internally?",
-    "What is a condition evaluation report and how can it help debugging?",
-    "What happens if two beans have the same type and neither is @Primary?",
-    "How would you cache method results with multiple parameters?"
-  ],
-  "followup": "What is a covering index?",
+  "topic": "Multithreading & Concurrency",
+  "content_format": "concept",
+  "question_count": 0,
+  "questions": [],
   "guide_link": "https://topmate.io/shubham_kamboj_06/new/Np6bUJzcPS",
-  "character_count": 816,
+  "character_count": 1516,
   "hashtags": [
     "#Java",
-    "#Concurrency",
-    "#SpringBoot",
+    "#JavaProgramming",
     "#BackendDeveloper",
-    "#InterviewPrep"
+    "#SystemDesign",
+    "#SoftwareEngineering"
   ],
-  "fingerprint": "6a3a4cd6037637de79f5",
-  "generated_at_utc": "2026-09-25T05:13:29.078407+00:00",
-  "history_size": 11,
+  "fingerprint": "c211235fe7c96c2b6748",
+  "generated_at_utc": "2026-09-25T11:25:40.720397+00:00",
+  "history_size": 12,
   "question_bank_size": 518,
-  "generator": "python-standard-library-template-engine-v3",
+  "generator": "python-standard-library-content-engine-v4",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7509117856584900608",
+  "linkedin_post_id": "urn:li:share:7509211522745700352",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 816,
-  "published_utf8_byte_count": 825
+  "published_character_count": 1516,
+  "published_utf8_byte_count": 1562
 }
