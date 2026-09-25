@@ -1,32 +1,32 @@
 {
-  "topic": "Coding & DSA",
+  "topic": "Spring Boot",
   "question_count": 5,
   "questions": [
-    "Find a pair of numbers whose sum equals a target.",
-    "Merge overlapping intervals and return the minimum number of meeting rooms.",
-    "Find autocomplete suggestions using a trie.",
-    "Implement an LRU cache and explain the data structures.",
-    "Find the number of islands in a binary grid."
+    "What happens with a checked exception inside a @Transactional method?",
+    "How does @Transactional work internally?",
+    "What is a condition evaluation report and how can it help debugging?",
+    "What happens if two beans have the same type and neither is @Primary?",
+    "How would you cache method results with multiple parameters?"
   ],
-  "followup": "Where should authorization decisions happen: gateway, service, or both?",
+  "followup": "What is a covering index?",
   "guide_link": "https://topmate.io/shubham_kamboj_06/new/Np6bUJzcPS",
-  "character_count": 771,
+  "character_count": 816,
   "hashtags": [
     "#Java",
-    "#JavaProgramming",
+    "#Concurrency",
+    "#SpringBoot",
     "#BackendDeveloper",
-    "#SystemDesign",
-    "#CodingInterview"
+    "#InterviewPrep"
   ],
-  "fingerprint": "9f1370d14025f01c61e1",
-  "generated_at_utc": "2026-09-25T00:43:50.328636+00:00",
-  "history_size": 10,
+  "fingerprint": "6a3a4cd6037637de79f5",
+  "generated_at_utc": "2026-09-25T05:13:29.078407+00:00",
+  "history_size": 11,
   "question_bank_size": 518,
   "generator": "python-standard-library-template-engine-v3",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7509049999641497600",
+  "linkedin_post_id": "urn:li:share:7509117856584900608",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 771,
-  "published_utf8_byte_count": 785
+  "published_character_count": 816,
+  "published_utf8_byte_count": 825
 }

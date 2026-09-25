@@ -128,5 +128,18 @@
     ],
     "followup": "Where should authorization decisions happen: gateway, service, or both?",
     "generated_at_utc": "2026-09-25T00:43:50.328636+00:00"
+  },
+  {
+    "fingerprint": "6a3a4cd6037637de79f5",
+    "topic": "Spring Boot",
+    "questions": [
+      "What happens with a checked exception inside a @Transactional method?",
+      "How does @Transactional work internally?",
+      "What is a condition evaluation report and how can it help debugging?",
+      "What happens if two beans have the same type and neither is @Primary?",
+      "How would you cache method results with multiple parameters?"
+    ],
+    "followup": "What is a covering index?",
+    "generated_at_utc": "2026-09-25T05:13:29.078407+00:00"
   }
 ]
