@@ -162,5 +162,12 @@
     "content_format": "checklist",
     "questions": [],
     "generated_at_utc": "2026-09-25T11:47:36.896992+00:00"
+  },
+  {
+    "fingerprint": "10160b5e499e8dd51224",
+    "topic": "SQL & Hibernate / JPA",
+    "content_format": "mistakes",
+    "questions": [],
+    "generated_at_utc": "2026-09-25T16:36:44.743930+00:00"
   }
 ]

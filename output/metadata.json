@@ -1,26 +1,26 @@
 {
-  "topic": "Java 8+ / Streams / Functional Programming",
-  "content_format": "checklist",
+  "topic": "SQL & Hibernate / JPA",
+  "content_format": "mistakes",
   "question_count": 0,
   "questions": [],
   "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1333,
+  "character_count": 1319,
   "hashtags": [
     "#Java",
-    "#SpringBoot",
-    "#Microservices",
-    "#BackendDevelopment",
+    "#JavaProgramming",
+    "#BackendDeveloper",
+    "#SystemDesign",
     "#SoftwareEngineering"
   ],
-  "fingerprint": "8b5dc2b02e6d86d8907a",
-  "generated_at_utc": "2026-09-25T11:47:36.896992+00:00",
-  "history_size": 14,
+  "fingerprint": "10160b5e499e8dd51224",
+  "generated_at_utc": "2026-09-25T16:36:44.743930+00:00",
+  "history_size": 15,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v4",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7509217042999328768",
+  "linkedin_post_id": "urn:li:share:7509289805449437185",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1333,
-  "published_utf8_byte_count": 1385
+  "published_character_count": 1319,
+  "published_utf8_byte_count": 1347
 }
