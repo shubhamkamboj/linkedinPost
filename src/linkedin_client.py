@@ -81,6 +81,7 @@ def create_text_post(
     person_urn: str,
     commentary: str,
     version: str = DEFAULT_VERSION,
+    link_url: str | None = None,
 ):
     """
     Create and publish a text post on the authenticated LinkedIn member's
@@ -116,6 +117,21 @@ def create_text_post(
         "isReshareDisabledByAuthor": False,
     }
 
+    # Give LinkedIn a native Article content target for the guide. The raw URL
+    # remains in commentary, while the Article target provides a clear native
+    # click target for the external guide.
+    if link_url:
+        payload["content"] = {
+            "article": {
+                "source": link_url,
+                "title": "Java Backend Master Guide",
+                "description": (
+                    "Java, Spring Boot, Microservices, System Design and "
+                    "Production Engineering interview preparation."
+                ),
+            }
+        }
+
     serialized_payload = json.dumps(
         payload,
         ensure_ascii=False,
@@ -126,6 +142,7 @@ def create_text_post(
         f"LinkedIn API payload prepared: "
         f"commentary_chars={len(commentary)}, "
         f"commentary_utf8_bytes={len(commentary.encode('utf-8'))}, "
+        f"guide_link_card={'ENABLED' if link_url else 'DISABLED'}, "
         f"payload_bytes={len(serialized_payload)}"
     )
 

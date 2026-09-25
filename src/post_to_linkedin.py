@@ -55,7 +55,7 @@ def main():
             "Refusing to publish because it exceeds the 3000-character safety limit."
         )
 
-    if "📘 You can get the complete guide from here:" not in post:
+    if "📘 Get the Java Backend Guide here:" not in post:
         raise RuntimeError("Guide CTA is missing from the generated post.")
 
     if "http://" not in post and "https://" not in post:
@@ -67,7 +67,28 @@ def main():
     elif not person_urn.startswith("urn:li:person:"):
         person_urn = f"urn:li:person:{person_urn}"
 
-    result = create_text_post(token, person_urn, post, version)
+    meta_file = ROOT / "output" / "metadata.json"
+    metadata = (
+        json.loads(meta_file.read_text(encoding="utf-8"))
+        if meta_file.exists()
+        else {}
+    )
+    guide_link = str(metadata.get("guide_link", "")).strip()
+    use_link_card = os.getenv("LINKEDIN_GUIDE_LINK_CARD", "true").lower() == "true"
+
+    if use_link_card and not guide_link:
+        raise RuntimeError("Guide link is missing from output/metadata.json.")
+
+    print(f"Guide link card : {'ENABLED' if use_link_card else 'DISABLED'}")
+    print(f"Guide URL       : {guide_link if guide_link else 'NONE'}")
+
+    result = create_text_post(
+        token,
+        person_urn,
+        post,
+        version,
+        link_url=guide_link if use_link_card else None,
+    )
 
     if result.get("status") not in (200, 201):
         raise RuntimeError(

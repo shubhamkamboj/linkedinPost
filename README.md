@@ -240,3 +240,27 @@ Never put these into source code:
 - GitHub PAT
 
 Use GitHub Secrets for credentials.
+
+## Content Engine v4
+
+The daily generator now rotates between multiple original Java Backend content formats instead of publishing interview questions every day:
+
+- Roadmap / preparation plan
+- Concept deep dive
+- Production troubleshooting scenario
+- Architecture / system design
+- Common mistakes
+- Senior engineer / interview strategy
+- Preparation checklist
+- Engineering trade-off comparison
+- Interview question set (occasionally)
+
+Posts target roughly 1,200–2,850 characters and never truncate an individual question.
+
+### LinkedIn guide link
+
+The guide URL is kept in `config/book_links.txt` and in the generated metadata. The publisher also sends the URL as LinkedIn Article content so the guide has a native clickable content target in addition to the URL shown in the commentary.
+
+### Schedule
+
+The workflow is scheduled for **06:05 AM Asia/Kolkata**. Scheduled publishing is enabled by default unless the repository variable `AUTO_POST_ENABLED` is explicitly set to `false`.
