@@ -38,7 +38,7 @@ jobs:
       LINKEDIN_VERSION: ${{ vars.LINKEDIN_VERSION || '202609' }}
       LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
       LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
-      LINKEDIN_GUIDE_LINK_CARD: ${{ vars.LINKEDIN_GUIDE_LINK_CARD || 'true' }}
+      LINKEDIN_GUIDE_LINK_CARD: ${{ vars.LINKEDIN_GUIDE_LINK_CARD || 'false' }}
 
     steps:
 
@@ -274,6 +274,24 @@ jobs:
       # ---------------------------------------------------------
       # 9. Publish
       # ---------------------------------------------------------
+      - name: Validate exact guide URL
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          expected = "https://tinyurl.com/ybd3yfv2"
+          post = Path("output/latest.txt").read_text(encoding="utf-8")
+
+          if expected not in post:
+              raise SystemExit(
+                  "Expected guide URL is missing or was modified: "
+                  + expected
+              )
+
+          print("Guide URL validation PASSED.")
+          print("Guide URL:", expected)
+          PY
+
       - name: Publish to LinkedIn
         run: |
           python src/post_to_linkedin.py
