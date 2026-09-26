@@ -724,7 +724,10 @@ def generate_post(book_link: str, max_chars: int = DEFAULT_MAX_CHARS, *, record_
     global ALL_TOPICS_CACHE
     ALL_TOPICS_CACHE = load_topics()
     topics = ALL_TOPICS_CACHE
-    history = _load_history()
+    # Test/preview generations must not inherit production rotation state.
+    # This keeps record_history=False deterministic and allows the mixed-format
+    # test suite to exercise every supported content format.
+    history = _load_history() if record_history else []
     used = {item.get("fingerprint") for item in history}
 
     for _ in range(160):
