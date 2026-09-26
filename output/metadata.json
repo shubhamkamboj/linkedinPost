@@ -1,26 +1,32 @@
 {
-  "topic": "SQL & Hibernate / JPA",
-  "content_format": "comparison",
-  "question_count": 0,
-  "questions": [],
-  "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1270,
-  "hashtags": [
-    "#JavaDeveloper",
-    "#CoreJava",
-    "#SpringBoot",
-    "#BackendEngineering",
-    "#TechCareers"
+  "topic": "Coding & DSA",
+  "content_format": "question_set",
+  "question_count": 5,
+  "questions": [
+    "Move all zeroes to the end of an array while preserving non-zero order.",
+    "Implement a trie with insert, search and prefix operations.",
+    "Perform topological sorting on a directed acyclic graph.",
+    "Find whether an array can be partitioned into two equal-sum subsets.",
+    "Find the second-largest number in an array in one pass."
   ],
-  "fingerprint": "a19613a71a8e46d0d3fa",
-  "generated_at_utc": "2026-09-26T02:11:01.921364+00:00",
-  "history_size": 16,
+  "guide_link": "https://tinyurl.com/ybd3yfv2",
+  "character_count": 1423,
+  "hashtags": [
+    "#Java",
+    "#SpringBoot",
+    "#Microservices",
+    "#BackendDevelopment",
+    "#SoftwareEngineering"
+  ],
+  "fingerprint": "43d9ab5d0f8b2591f909",
+  "generated_at_utc": "2026-09-26T06:07:44.043179+00:00",
+  "history_size": 17,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v4",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7509434329488601089",
+  "linkedin_post_id": "urn:li:share:7509493897207742464",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1270,
-  "published_utf8_byte_count": 1305
+  "published_character_count": 1423,
+  "published_utf8_byte_count": 1459
 }
