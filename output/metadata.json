@@ -1,26 +1,26 @@
 {
-  "topic": "SQL & Hibernate / JPA",
-  "content_format": "roadmap",
+  "topic": "Microservices",
+  "content_format": "checklist",
   "question_count": 0,
   "questions": [],
   "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1572,
+  "character_count": 1302,
   "hashtags": [
-    "#Java",
-    "#JavaProgramming",
-    "#BackendDeveloper",
-    "#SystemDesign",
-    "#SoftwareEngineering"
+    "#JavaDeveloper",
+    "#Kafka",
+    "#Microservices",
+    "#BackendEngineering",
+    "#JavaInterview"
   ],
-  "fingerprint": "f31b6d938a3ea635b46f",
-  "generated_at_utc": "2026-09-27T02:43:21.120236+00:00",
-  "history_size": 20,
+  "fingerprint": "62464000442769bed54c",
+  "generated_at_utc": "2026-09-27T05:38:36.293254+00:00",
+  "history_size": 21,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v4",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7509804851011215360",
+  "linkedin_post_id": "urn:li:share:7509848954537205760",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1572,
-  "published_utf8_byte_count": 1633
+  "published_character_count": 1302,
+  "published_utf8_byte_count": 1354
 }
