@@ -1,26 +1,26 @@
 {
-  "topic": "Core Java",
-  "content_format": "concept",
+  "topic": "SQL & Hibernate / JPA",
+  "content_format": "roadmap",
   "question_count": 0,
   "questions": [],
   "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1517,
+  "character_count": 1572,
   "hashtags": [
-    "#JavaBackend",
-    "#SpringBoot",
-    "#Microservices",
+    "#Java",
+    "#JavaProgramming",
+    "#BackendDeveloper",
     "#SystemDesign",
-    "#InterviewPreparation"
+    "#SoftwareEngineering"
   ],
-  "fingerprint": "20f382db38495532acc7",
-  "generated_at_utc": "2026-09-27T00:01:06.593612+00:00",
-  "history_size": 19,
+  "fingerprint": "f31b6d938a3ea635b46f",
+  "generated_at_utc": "2026-09-27T02:43:21.120236+00:00",
+  "history_size": 20,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v4",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7509764021349335040",
+  "linkedin_post_id": "urn:li:share:7509804851011215360",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1517,
-  "published_utf8_byte_count": 1563
+  "published_character_count": 1572,
+  "published_utf8_byte_count": 1633
 }
