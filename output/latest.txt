@@ -1,41 +1,52 @@
-⚠️ 5 COMMON MISTAKES WHEN LEARNING MICROSERVICES
+🚨 PRODUCTION SCENARIO — PRODUCTION SCENARIOS / TROUBLESHOOTING
 
-A lot of backend preparation focuses on collecting more concepts.
-Sometimes the bigger improvement comes from removing bad habits.
+Imagine the application was healthy yesterday.
+Today, users suddenly start reporting slow requests.
 
-1. Ignoring idempotency.
+One of the symptoms is:
+👉 high CPU
 
-2. Splitting services too early.
+What should you do first?
 
-3. Retrying every failure.
+Don't immediately restart the service.
+Don't immediately increase the instance size.
+Don't change five things at once.
 
-4. Using synchronous calls for every workflow.
+Start by narrowing the search space:
 
-5. Having no trace across service boundaries.
+🔎 CHECK 1 — Recent changes
+• deployment
+• configuration
+• traffic pattern
+• database/schema changes
 
-Instead, try this approach:
+📊 CHECK 2 — Metrics
+• latency
+• throughput
+• CPU
+• memory
+• thread pools / queues
 
-✅ Learn the concept
-✅ Build a tiny example
-✅ Break the example intentionally
-✅ Observe the logs/metrics
-✅ Measure the behavior
-✅ Write down the trade-off
+🧵 CHECK 3 — Dependencies
+• database
+• cache
+• Kafka
+• downstream APIs
 
-For senior interviews, this becomes even more important.
+📝 CHECK 4 — Logs + traces
+Look for the first component where the latency or error rate changes.
 
-You are not only expected to know how something works.
-You may be asked why you chose it, what alternative you rejected and what happens when it fails.
+🛠️ CHECK 5 — Mitigate safely
+Reduce user impact first, then continue the root-cause investigation.
 
-That is where practical engineering thinking becomes visible.
+The important lesson:
+Production debugging is a process of elimination.
+The goal is not to guess the root cause faster.
+The goal is to collect the right evidence faster.
 
-The objective is not to avoid every mistake. It is to recognize the risk early, measure it and build guardrails around it.
-
-A production-ready engineer thinks about the unhappy path before the incident forces the conversation.
-
-📌 For senior roles, connect your answer to scalability, reliability, observability, security and operational cost.
+📌 The goal is not to memorize more terms. The goal is to understand the trade-off, failure mode and production impact behind each decision.
 
 📘 Get the Java Backend Guide here:
 https://tinyurl.com/ybd3yfv2
 
-#JavaBackend #SpringBoot #Microservices #SystemDesign #InterviewPreparation
+#Java #JavaProgramming #BackendDeveloper #SystemDesign #SoftwareEngineering

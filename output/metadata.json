@@ -1,26 +1,26 @@
 {
-  "topic": "Microservices",
-  "content_format": "mistakes",
+  "topic": "Production Scenarios / Troubleshooting",
+  "content_format": "production",
   "question_count": 0,
   "questions": [],
   "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1307,
+  "character_count": 1290,
   "hashtags": [
-    "#JavaBackend",
-    "#SpringBoot",
-    "#Microservices",
+    "#Java",
+    "#JavaProgramming",
+    "#BackendDeveloper",
     "#SystemDesign",
-    "#InterviewPreparation"
+    "#SoftwareEngineering"
   ],
-  "fingerprint": "70003b73a8d4e5646a3a",
-  "generated_at_utc": "2026-09-28T02:56:13.445472+00:00",
-  "history_size": 23,
+  "fingerprint": "578a8824b5e9b12913e9",
+  "generated_at_utc": "2026-09-28T05:46:22.855454+00:00",
+  "history_size": 24,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v4",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7510170477982720002",
+  "linkedin_post_id": "urn:li:share:7510213299259699200",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1307,
-  "published_utf8_byte_count": 1329
+  "published_character_count": 1290,
+  "published_utf8_byte_count": 1357
 }
