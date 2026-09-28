@@ -1,26 +1,26 @@
 {
-  "topic": "Project Discussion / Senior-Level",
-  "content_format": "architecture",
+  "topic": "Microservices",
+  "content_format": "mistakes",
   "question_count": 0,
   "questions": [],
   "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1428,
+  "character_count": 1307,
   "hashtags": [
-    "#JavaDeveloper",
-    "#Kafka",
+    "#JavaBackend",
+    "#SpringBoot",
     "#Microservices",
-    "#BackendEngineering",
-    "#JavaInterview"
+    "#SystemDesign",
+    "#InterviewPreparation"
   ],
-  "fingerprint": "4c10e0dc30d1d6b0ecf9",
-  "generated_at_utc": "2026-09-27T15:27:00.325451+00:00",
-  "history_size": 22,
+  "fingerprint": "70003b73a8d4e5646a3a",
+  "generated_at_utc": "2026-09-28T02:56:13.445472+00:00",
+  "history_size": 23,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v4",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7509997031365529600",
+  "linkedin_post_id": "urn:li:share:7510170477982720002",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1428,
-  "published_utf8_byte_count": 1514
+  "published_character_count": 1307,
+  "published_utf8_byte_count": 1329
 }
