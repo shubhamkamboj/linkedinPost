@@ -251,5 +251,12 @@
       "How would you create a Map<String, List<Order>> using groupingBy?"
     ],
     "generated_at_utc": "2026-09-28T07:33:43.542444+00:00"
+  },
+  {
+    "fingerprint": "d8dee28aa7c8fc37d618",
+    "topic": "Spring Security / APIs / Distributed Systems",
+    "content_format": "concept",
+    "questions": [],
+    "generated_at_utc": "2026-09-28T13:17:47.587874+00:00"
   }
 ]

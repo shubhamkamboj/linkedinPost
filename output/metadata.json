@@ -1,32 +1,26 @@
 {
-  "topic": "Java 8+ / Streams / Functional Programming",
-  "content_format": "question_set",
-  "question_count": 5,
-  "questions": [
-    "How can a poorly designed collector produce incorrect parallel results?",
-    "How would you find the highest-paid employee in each department?",
-    "What is a downstream collector?",
-    "How would you merge duplicate keys in toMap?",
-    "How would you create a Map<String, List<Order>> using groupingBy?"
-  ],
+  "topic": "Spring Security / APIs / Distributed Systems",
+  "content_format": "concept",
+  "question_count": 0,
+  "questions": [],
   "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1408,
+  "character_count": 1559,
   "hashtags": [
-    "#JavaDeveloper",
-    "#Kafka",
-    "#Microservices",
-    "#BackendEngineering",
-    "#JavaInterview"
+    "#Java",
+    "#JavaProgramming",
+    "#BackendDeveloper",
+    "#SystemDesign",
+    "#SoftwareEngineering"
   ],
-  "fingerprint": "83d341a33458494abea1",
-  "generated_at_utc": "2026-09-28T07:33:43.542444+00:00",
-  "history_size": 25,
+  "fingerprint": "d8dee28aa7c8fc37d618",
+  "generated_at_utc": "2026-09-28T13:17:47.587874+00:00",
+  "history_size": 26,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v4",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7510240313341394944",
+  "linkedin_post_id": "urn:li:share:7510326901002018816",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1408,
-  "published_utf8_byte_count": 1438
+  "published_character_count": 1559,
+  "published_utf8_byte_count": 1605
 }
