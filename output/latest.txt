@@ -1,52 +1,36 @@
-🚨 PRODUCTION SCENARIO — PRODUCTION SCENARIOS / TROUBLESHOOTING
+🔥 INTERVIEW PRACTICE — Java 8+ / Streams / Functional Programming
 
-Imagine the application was healthy yesterday.
-Today, users suddenly start reporting slow requests.
+Don't just read the answers.
+Pause after each question and explain your reasoning out loud.
 
-One of the symptoms is:
-👉 high CPU
+1. How can a poorly designed collector produce incorrect parallel results?
+2. How would you find the highest-paid employee in each department?
+3. What is a downstream collector?
+4. How would you merge duplicate keys in toMap?
+5. How would you create a Map<String, List<Order>> using groupingBy?
 
-What should you do first?
+🎯 FOLLOW-UP
+6. How would you configure structured JSON logging in Spring Boot?
 
-Don't immediately restart the service.
-Don't immediately increase the instance size.
-Don't change five things at once.
+For every answer, try to cover:
+• what it is
+• how it works
+• when to use it
+• trade-offs
+• production failure mode
 
-Start by narrowing the search space:
+If you can explain the first answer but struggle with the follow-up, that's usually a signal that the concept needs another layer of study.
 
-🔎 CHECK 1 — Recent changes
-• deployment
-• configuration
-• traffic pattern
-• database/schema changes
+The goal is not to memorize 500 questions.
+The goal is to become comfortable with the next question.
 
-📊 CHECK 2 — Metrics
-• latency
-• throughput
-• CPU
-• memory
-• thread pools / queues
+🎯 Senior angle: explain not only the answer, but also the trade-off and what you would monitor in production.
 
-🧵 CHECK 3 — Dependencies
-• database
-• cache
-• Kafka
-• downstream APIs
+🔥 Bonus practice: take the question that felt easiest and ask yourself what would change if traffic, data volume or failure rate became 10x larger.
 
-📝 CHECK 4 — Logs + traces
-Look for the first component where the latency or error rate changes.
-
-🛠️ CHECK 5 — Mitigate safely
-Reduce user impact first, then continue the root-cause investigation.
-
-The important lesson:
-Production debugging is a process of elimination.
-The goal is not to guess the root cause faster.
-The goal is to collect the right evidence faster.
-
-📌 The goal is not to memorize more terms. The goal is to understand the trade-off, failure mode and production impact behind each decision.
+📌 For senior roles, connect your answer to scalability, reliability, observability, security and operational cost.
 
 📘 Get the Java Backend Guide here:
 https://tinyurl.com/ybd3yfv2
 
-#Java #JavaProgramming #BackendDeveloper #SystemDesign #SoftwareEngineering
+#JavaDeveloper #Kafka #Microservices #BackendEngineering #JavaInterview

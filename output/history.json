@@ -238,5 +238,18 @@
     "content_format": "production",
     "questions": [],
     "generated_at_utc": "2026-09-28T05:46:22.855454+00:00"
+  },
+  {
+    "fingerprint": "83d341a33458494abea1",
+    "topic": "Java 8+ / Streams / Functional Programming",
+    "content_format": "question_set",
+    "questions": [
+      "How can a poorly designed collector produce incorrect parallel results?",
+      "How would you find the highest-paid employee in each department?",
+      "What is a downstream collector?",
+      "How would you merge duplicate keys in toMap?",
+      "How would you create a Map<String, List<Order>> using groupingBy?"
+    ],
+    "generated_at_utc": "2026-09-28T07:33:43.542444+00:00"
   }
 ]
