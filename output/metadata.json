@@ -1,26 +1,26 @@
 {
-  "topic": "Spring Security / APIs / Distributed Systems",
-  "content_format": "concept",
+  "topic": "Multithreading & Concurrency",
+  "content_format": "roadmap",
   "question_count": 0,
   "questions": [],
   "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1559,
+  "character_count": 1605,
   "hashtags": [
-    "#Java",
-    "#JavaProgramming",
-    "#BackendDeveloper",
-    "#SystemDesign",
-    "#SoftwareEngineering"
+    "#JavaDeveloper",
+    "#CoreJava",
+    "#SpringBoot",
+    "#BackendEngineering",
+    "#TechCareers"
   ],
-  "fingerprint": "d8dee28aa7c8fc37d618",
-  "generated_at_utc": "2026-09-28T13:17:47.587874+00:00",
-  "history_size": 26,
+  "fingerprint": "fe4bf10ca79c3584fdcb",
+  "generated_at_utc": "2026-09-29T06:05:43.082225+00:00",
+  "history_size": 27,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v4",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7510326901002018816",
+  "linkedin_post_id": "urn:li:share:7510580554505977858",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1559,
-  "published_utf8_byte_count": 1605
+  "published_character_count": 1605,
+  "published_utf8_byte_count": 1671
 }
