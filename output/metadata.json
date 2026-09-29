@@ -1,26 +1,26 @@
 {
   "topic": "Multithreading & Concurrency",
-  "content_format": "roadmap",
+  "content_format": "checklist",
   "question_count": 0,
   "questions": [],
   "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1605,
+  "character_count": 1327,
   "hashtags": [
-    "#JavaDeveloper",
-    "#CoreJava",
+    "#Java",
     "#SpringBoot",
-    "#BackendEngineering",
-    "#TechCareers"
+    "#Microservices",
+    "#BackendDevelopment",
+    "#SoftwareEngineering"
   ],
-  "fingerprint": "fe4bf10ca79c3584fdcb",
-  "generated_at_utc": "2026-09-29T06:05:43.082225+00:00",
-  "history_size": 27,
+  "fingerprint": "58ba9b501221bf2091ab",
+  "generated_at_utc": "2026-09-29T09:55:53.709271+00:00",
+  "history_size": 28,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v4",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7510580554505977858",
+  "linkedin_post_id": "urn:li:share:7510638479681224704",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1605,
-  "published_utf8_byte_count": 1671
+  "published_character_count": 1327,
+  "published_utf8_byte_count": 1373
 }
