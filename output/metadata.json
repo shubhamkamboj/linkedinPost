@@ -1,26 +1,26 @@
 {
-  "topic": "Multithreading & Concurrency",
-  "content_format": "checklist",
+  "topic": "Java 8+ / Streams / Functional Programming",
+  "content_format": "senior",
   "question_count": 0,
   "questions": [],
   "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1327,
+  "character_count": 1508,
   "hashtags": [
     "#Java",
-    "#SpringBoot",
-    "#Microservices",
-    "#BackendDevelopment",
+    "#JavaProgramming",
+    "#BackendDeveloper",
+    "#SystemDesign",
     "#SoftwareEngineering"
   ],
-  "fingerprint": "58ba9b501221bf2091ab",
-  "generated_at_utc": "2026-09-29T09:55:53.709271+00:00",
-  "history_size": 28,
+  "fingerprint": "b8d9ff26623a043bb0ab",
+  "generated_at_utc": "2026-09-30T00:39:47.163916+00:00",
+  "history_size": 29,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v4",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7510638479681224704",
+  "linkedin_post_id": "urn:li:share:7510860919355109376",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1327,
-  "published_utf8_byte_count": 1373
+  "published_character_count": 1508,
+  "published_utf8_byte_count": 1539
 }

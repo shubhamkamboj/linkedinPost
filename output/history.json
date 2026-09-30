@@ -272,5 +272,12 @@
     "content_format": "checklist",
     "questions": [],
     "generated_at_utc": "2026-09-29T09:55:53.709271+00:00"
+  },
+  {
+    "fingerprint": "b8d9ff26623a043bb0ab",
+    "topic": "Java 8+ / Streams / Functional Programming",
+    "content_format": "senior",
+    "questions": [],
+    "generated_at_utc": "2026-09-30T00:39:47.163916+00:00"
   }
 ]
