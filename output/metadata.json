@@ -1,26 +1,26 @@
 {
   "topic": "Java 8+ / Streams / Functional Programming",
-  "content_format": "senior",
+  "content_format": "comparison",
   "question_count": 0,
   "questions": [],
   "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1508,
+  "character_count": 1284,
   "hashtags": [
-    "#Java",
-    "#JavaProgramming",
-    "#BackendDeveloper",
-    "#SystemDesign",
-    "#SoftwareEngineering"
+    "#JavaDeveloper",
+    "#CoreJava",
+    "#SpringBoot",
+    "#BackendEngineering",
+    "#TechCareers"
   ],
-  "fingerprint": "b8d9ff26623a043bb0ab",
-  "generated_at_utc": "2026-09-30T00:39:47.163916+00:00",
-  "history_size": 29,
+  "fingerprint": "d2051f0bbb0d841f83cd",
+  "generated_at_utc": "2026-09-30T05:53:43.783983+00:00",
+  "history_size": 30,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v4",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7510860919355109376",
+  "linkedin_post_id": "urn:li:share:7510939924079030272",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1508,
-  "published_utf8_byte_count": 1539
+  "published_character_count": 1284,
+  "published_utf8_byte_count": 1319
 }
