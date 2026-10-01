@@ -300,5 +300,12 @@
     "content_format": "production",
     "questions": [],
     "generated_at_utc": "2026-10-01T06:27:18.510529+00:00"
+  },
+  {
+    "fingerprint": "ea7ae6a3b79eb62fa05c",
+    "topic": "Spring Security / APIs / Distributed Systems",
+    "content_format": "mistakes",
+    "questions": [],
+    "generated_at_utc": "2026-10-01T10:49:33.152017+00:00"
   }
 ]
