@@ -1,26 +1,26 @@
 {
-  "topic": "Project Discussion / Senior-Level",
-  "content_format": "architecture",
+  "topic": "SQL & Hibernate / JPA",
+  "content_format": "production",
   "question_count": 0,
   "questions": [],
   "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1459,
+  "character_count": 1285,
   "hashtags": [
-    "#JavaDeveloper",
-    "#Kafka",
-    "#Microservices",
-    "#BackendEngineering",
-    "#JavaInterview"
+    "#Java",
+    "#Concurrency",
+    "#SpringBoot",
+    "#BackendDeveloper",
+    "#InterviewPrep"
   ],
-  "fingerprint": "2a542fb139dadbba6955",
-  "generated_at_utc": "2026-10-01T01:46:47.898208+00:00",
-  "history_size": 31,
+  "fingerprint": "b0d1dffd18adeb16e128",
+  "generated_at_utc": "2026-10-01T06:27:18.510529+00:00",
+  "history_size": 32,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v4",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7511240169925074946",
+  "linkedin_post_id": "urn:li:share:7511310763127476226",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1459,
-  "published_utf8_byte_count": 1545
+  "published_character_count": 1285,
+  "published_utf8_byte_count": 1352
 }
