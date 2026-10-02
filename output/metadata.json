@@ -1,10 +1,10 @@
 {
-  "topic": "Spring Security / APIs / Distributed Systems",
-  "content_format": "mistakes",
+  "topic": "SQL & Hibernate / JPA",
+  "content_format": "concept",
   "question_count": 0,
   "questions": [],
   "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1375,
+  "character_count": 1507,
   "hashtags": [
     "#Java",
     "#SpringBoot",
@@ -12,15 +12,15 @@
     "#BackendDevelopment",
     "#SoftwareEngineering"
   ],
-  "fingerprint": "ea7ae6a3b79eb62fa05c",
-  "generated_at_utc": "2026-10-01T10:49:33.152017+00:00",
-  "history_size": 33,
+  "fingerprint": "9b6c80c12708f8339c9b",
+  "generated_at_utc": "2026-10-02T01:43:00.627400+00:00",
+  "history_size": 34,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v4",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7511376758944899072",
+  "linkedin_post_id": "urn:li:share:7511601604559630336",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1375,
-  "published_utf8_byte_count": 1397
+  "published_character_count": 1507,
+  "published_utf8_byte_count": 1555
 }

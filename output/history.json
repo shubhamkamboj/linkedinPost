@@ -307,5 +307,12 @@
     "content_format": "mistakes",
     "questions": [],
     "generated_at_utc": "2026-10-01T10:49:33.152017+00:00"
+  },
+  {
+    "fingerprint": "9b6c80c12708f8339c9b",
+    "topic": "SQL & Hibernate / JPA",
+    "content_format": "concept",
+    "questions": [],
+    "generated_at_utc": "2026-10-02T01:43:00.627400+00:00"
   }
 ]
