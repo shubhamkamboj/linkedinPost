@@ -314,5 +314,18 @@
     "content_format": "concept",
     "questions": [],
     "generated_at_utc": "2026-10-02T01:43:00.627400+00:00"
+  },
+  {
+    "fingerprint": "e5c407a96cad4738b552",
+    "topic": "Microservices",
+    "content_format": "question_set",
+    "questions": [
+      "How would you enforce per-tenant quotas?",
+      "Why can retries make a downstream outage worse?",
+      "When can asynchronous messaging make a system harder to reason about?",
+      "How would you handle a downstream dependency that returns valid but stale data?",
+      "How would you add exponential backoff and jitter?"
+    ],
+    "generated_at_utc": "2026-10-02T06:05:31.588178+00:00"
   }
 ]
