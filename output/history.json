@@ -334,5 +334,12 @@
     "content_format": "senior",
     "questions": [],
     "generated_at_utc": "2026-10-03T03:40:12.230132+00:00"
+  },
+  {
+    "fingerprint": "45a7e72cca4a6ec32998",
+    "topic": "Spring Boot",
+    "content_format": "comparison",
+    "questions": [],
+    "generated_at_utc": "2026-10-03T05:39:52.902984+00:00"
   }
 ]

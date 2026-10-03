@@ -1,10 +1,10 @@
 {
-  "topic": "System Design",
-  "content_format": "senior",
+  "topic": "Spring Boot",
+  "content_format": "comparison",
   "question_count": 0,
   "questions": [],
   "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1444,
+  "character_count": 1305,
   "hashtags": [
     "#Java",
     "#SpringBoot",
@@ -12,15 +12,15 @@
     "#BackendDevelopment",
     "#SoftwareEngineering"
   ],
-  "fingerprint": "983832de314c3fcca78f",
-  "generated_at_utc": "2026-10-03T03:40:12.230132+00:00",
-  "history_size": 36,
+  "fingerprint": "45a7e72cca4a6ec32998",
+  "generated_at_utc": "2026-10-03T05:39:52.902984+00:00",
+  "history_size": 37,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v4",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7511993485424541696",
+  "linkedin_post_id": "urn:li:share:7512023603161268224",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1444,
-  "published_utf8_byte_count": 1481
+  "published_character_count": 1305,
+  "published_utf8_byte_count": 1340
 }
