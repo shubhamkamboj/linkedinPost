@@ -1,32 +1,26 @@
 {
-  "topic": "Microservices",
-  "content_format": "question_set",
-  "question_count": 5,
-  "questions": [
-    "How would you enforce per-tenant quotas?",
-    "Why can retries make a downstream outage worse?",
-    "When can asynchronous messaging make a system harder to reason about?",
-    "How would you handle a downstream dependency that returns valid but stale data?",
-    "How would you add exponential backoff and jitter?"
-  ],
+  "topic": "System Design",
+  "content_format": "senior",
+  "question_count": 0,
+  "questions": [],
   "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1378,
+  "character_count": 1444,
   "hashtags": [
     "#Java",
-    "#Concurrency",
     "#SpringBoot",
-    "#BackendDeveloper",
-    "#InterviewPrep"
+    "#Microservices",
+    "#BackendDevelopment",
+    "#SoftwareEngineering"
   ],
-  "fingerprint": "e5c407a96cad4738b552",
-  "generated_at_utc": "2026-10-02T06:05:31.588178+00:00",
-  "history_size": 35,
+  "fingerprint": "983832de314c3fcca78f",
+  "generated_at_utc": "2026-10-03T03:40:12.230132+00:00",
+  "history_size": 36,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v4",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7511667669599682561",
+  "linkedin_post_id": "urn:li:share:7511993485424541696",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1378,
-  "published_utf8_byte_count": 1414
+  "published_character_count": 1444,
+  "published_utf8_byte_count": 1481
 }
