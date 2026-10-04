@@ -3,7 +3,7 @@ name: Daily Java LinkedIn Post
 on:
   # Every day at 06:00 AM Asia/Kolkata (IST)
   schedule:
-    - cron: "5 6 * * *"
+    - cron: "0 6 * * *"
       timezone: "Asia/Kolkata"
 
   # Manual testing
@@ -27,12 +27,12 @@ jobs:
     if: >-
       (github.event_name == 'workflow_dispatch' && inputs.force_run == true)
       ||
-      (github.event_name == 'schedule' && vars.AUTO_POST_ENABLED != 'false')
+      (github.event_name == 'schedule' && vars.AUTO_POST_ENABLED == 'true')
 
     runs-on: ubuntu-latest
 
     env:
-      AUTO_POST_ENABLED: ${{ vars.AUTO_POST_ENABLED || 'true' }}
+      AUTO_POST_ENABLED: ${{ vars.AUTO_POST_ENABLED || 'false' }}
       FORCE_RUN: ${{ inputs.force_run || 'false' }}
       POST_MAX_CHARS: ${{ vars.POST_MAX_CHARS || '2850' }}
       LINKEDIN_VERSION: ${{ vars.LINKEDIN_VERSION || '202609' }}
@@ -43,82 +43,76 @@ jobs:
     steps:
 
       # ---------------------------------------------------------
-      # 1. Checkout repository
+      # 1. Checkout
       # ---------------------------------------------------------
+
       - name: Checkout
         uses: actions/checkout@v4
 
       # ---------------------------------------------------------
-      # 2. Show schedule / runner information
+      # 2. Python
       # ---------------------------------------------------------
-      - name: Show schedule configuration
-        run: |
-          echo "========================================"
-          echo "DAILY LINKEDIN POST CONFIGURATION"
-          echo "========================================"
-          echo "Target timezone : Asia/Kolkata"
-          echo "Target time     : 06:05 AM IST"
-          echo "Current UTC     : $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
-          echo "Runner time     : $(date '+%Y-%m-%d %H:%M:%S %Z')"
-          echo "========================================"
 
-      # ---------------------------------------------------------
-      # 3. Python
-      # ---------------------------------------------------------
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
       # ---------------------------------------------------------
-      # 4. Run complete generator test suite
+      # 3. Generator tests
       # ---------------------------------------------------------
+
       - name: Run generator test suite
         run: |
           python tests/test_content_generator.py
 
       # ---------------------------------------------------------
-      # 5. Generate today's post
+      # 4. Generate post
       # ---------------------------------------------------------
+
       - name: Generate post
         run: |
           python src/generate_post.py
 
       # ---------------------------------------------------------
-      # 6. Show generated post
+      # 5. Validate generated output
       # ---------------------------------------------------------
-      - name: Show generated post
-        run: |
-          echo "========================================"
-          echo "GENERATED LINKEDIN POST"
-          echo "========================================"
 
-          cat output/latest.txt
-
-          echo ""
-          echo "========================================"
-          echo "POST CHARACTER COUNT"
-          echo "========================================"
-
-          wc -m output/latest.txt
-
-      # ---------------------------------------------------------
-      # 7. Validate generated post
-      # ---------------------------------------------------------
       - name: Validate generated output
         run: |
           python - <<'PY'
           from pathlib import Path
           import json
-          import os
           import re
+          import os
 
-          post = Path("output/latest.txt").read_text(
+          ROOT = Path(".")
+
+          post_file = ROOT / "output" / "latest.txt"
+          metadata_file = ROOT / "output" / "metadata.json"
+          guide_file = ROOT / "config" / "book_links.txt"
+
+          if not post_file.exists():
+              raise SystemExit(
+                  "output/latest.txt does not exist."
+              )
+
+          if not metadata_file.exists():
+              raise SystemExit(
+                  "output/metadata.json does not exist."
+              )
+
+          if not guide_file.exists():
+              raise SystemExit(
+                  "config/book_links.txt does not exist."
+              )
+
+          post = post_file.read_text(
               encoding="utf-8"
-          )
+          ).strip()
 
           metadata = json.loads(
-              Path("output/metadata.json").read_text(
+              metadata_file.read_text(
                   encoding="utf-8"
               )
           )
@@ -126,61 +120,195 @@ jobs:
           max_chars = int(
               os.environ.get(
                   "POST_MAX_CHARS",
-                  "2850"
+                  "2850",
               )
           )
 
-          print("========================================")
-          print("POST VALIDATION")
-          print("========================================")
+          # -----------------------------------------------------
+          # Load guide links ONLY from config/book_links.txt
+          # -----------------------------------------------------
 
-          print(f"Characters      : {len(post)}")
-          print(f"UTF-8 bytes     : {len(post.encode('utf-8'))}")
-          print(f"Topic           : {metadata.get('topic')}")
-          print(f"Questions       : {metadata.get('question_count')}")
-          print(f"Question bank   : {metadata.get('question_bank_size')}")
-          print(f"Fingerprint     : {metadata.get('fingerprint')}")
+          guide_links = [
+              line.strip()
+              for line in guide_file.read_text(
+                  encoding="utf-8"
+              ).splitlines()
+              if line.strip()
+              and not line.strip().startswith("#")
+          ]
 
-          # Character limit
-          if len(post) > max_chars:
+          if not guide_links:
               raise SystemExit(
-                  f"Post is {len(post)} characters. "
-                  f"Maximum allowed is {max_chars}."
+                  "No guide links found in config/book_links.txt."
               )
 
-          # Question count
-          content_format = metadata.get("content_format")
-          allowed_formats = {
-              "story", "opinion", "production", "concept", "architecture",
-              "comparison", "mistakes", "senior", "roadmap", "checklist",
-              "myth_vs_reality", "interview_story", "question_set",
-          }
-
-          if content_format not in allowed_formats:
-              raise SystemExit(f"Unknown content format: {content_format}")
-
-          # Only question-set posts are required to contain selected questions.
-          if content_format == "question_set":
-              if metadata.get("question_count") != 5:
-                  raise SystemExit("Question-set post must contain exactly 5 primary questions.")
-              for question in metadata.get("questions", []):
-                  if question not in post:
-                      raise SystemExit("Selected question missing or modified:\n" + question)
-
-          # URL
-          if not re.search(
-              r"https?://\S+",
-              post,
-              re.IGNORECASE
+          if len(guide_links) != len(
+              set(guide_links)
           ):
               raise SystemExit(
-                  "Guide URL is missing."
+                  "Duplicate guide links found in config/book_links.txt."
               )
 
-          # Exactly five hashtags
+          for link in guide_links:
+              if not re.fullmatch(
+                  r"https://\S+",
+                  link,
+              ):
+                  raise SystemExit(
+                      f"Invalid guide URL in config/book_links.txt: {link}"
+                  )
+
+          print(
+              f"Configured guide links: {len(guide_links)}"
+          )
+
+          # -----------------------------------------------------
+          # Basic validation
+          # -----------------------------------------------------
+
+          print(
+              f"Characters: {len(post)}"
+          )
+
+          print(
+              f"Topic: {metadata.get('topic')}"
+          )
+
+          print(
+              f"Format: {metadata.get('content_format')}"
+          )
+
+          print(
+              f"Guide link: {metadata.get('guide_link')}"
+          )
+
+          if len(post) > max_chars:
+              raise SystemExit(
+                  f"Generated post exceeds configured "
+                  f"character limit: {len(post)} > {max_chars}"
+              )
+
+          if not post:
+              raise SystemExit(
+                  "Generated post is empty."
+              )
+
+          # -----------------------------------------------------
+          # Content format
+          # -----------------------------------------------------
+
+          allowed_formats = {
+              "story",
+              "opinion",
+              "production",
+              "concept",
+              "architecture",
+              "comparison",
+              "mistakes",
+              "senior",
+              "roadmap",
+              "checklist",
+              "myth_vs_reality",
+              "interview_story",
+              "question_set",
+          }
+
+          content_format = metadata.get(
+              "content_format"
+          )
+
+          if content_format not in allowed_formats:
+              raise SystemExit(
+                  f"Unknown content format: {content_format}"
+              )
+
+          # -----------------------------------------------------
+          # Question-set validation
+          # -----------------------------------------------------
+
+          if content_format == "question_set":
+
+              if metadata.get(
+                  "question_count"
+              ) != 5:
+                  raise SystemExit(
+                      "Question-set post must contain "
+                      "exactly 5 primary questions."
+                  )
+
+              for question in metadata.get(
+                  "questions",
+                  [],
+              ):
+
+                  if question not in post:
+                      raise SystemExit(
+                          "Selected question missing "
+                          "or modified:\n"
+                          + question
+                      )
+
+          # -----------------------------------------------------
+          # Guide CTA validation
+          # -----------------------------------------------------
+
+          if "📘" not in post:
+              raise SystemExit(
+                  "Guide CTA marker is missing."
+              )
+
+          metadata_guide_link = str(
+              metadata.get(
+                  "guide_link",
+                  "",
+              )
+          ).strip()
+
+          if not metadata_guide_link:
+              raise SystemExit(
+                  "metadata.json does not contain guide_link."
+              )
+
+          if metadata_guide_link not in guide_links:
+              raise SystemExit(
+                  "metadata guide_link is not present "
+                  "in config/book_links.txt."
+              )
+
+          links_in_post = [
+              link
+              for link in guide_links
+              if link in post
+          ]
+
+          if len(links_in_post) != 1:
+              raise SystemExit(
+                  "Generated post must contain exactly "
+                  "one configured guide link. "
+                  f"Found {len(links_in_post)}."
+              )
+
+          if links_in_post[0] != metadata_guide_link:
+              raise SystemExit(
+                  "Guide link mismatch between "
+                  "post and metadata."
+              )
+
+          print(
+              "Guide CTA validation PASSED."
+          )
+
+          print(
+              f"Selected guide link: {metadata_guide_link}"
+          )
+
+          # -----------------------------------------------------
+          # Hashtags
+          # -----------------------------------------------------
+
           hashtags = re.findall(
               r"(?<!\w)#\w+",
-              post
+              post,
           )
 
           if len(hashtags) != 5:
@@ -189,14 +317,23 @@ jobs:
                   f"Found {len(hashtags)}."
               )
 
+          print(
+              "Hashtag validation PASSED."
+          )
+
           print("")
-          print("VALIDATION PASSED")
-          print("========================================")
+          print(
+              "Generated output validation PASSED."
+          )
+          print(
+              "========================================"
+          )
           PY
 
       # ---------------------------------------------------------
-      # 8. Check LinkedIn configuration
+      # 6. LinkedIn configuration
       # ---------------------------------------------------------
+
       - name: Check LinkedIn configuration
         run: |
           python - <<'PY'
@@ -232,30 +369,39 @@ jobs:
           print("========================================")
 
           print(
-              f"AUTO_POST_ENABLED          : {enabled}"
+              f"AUTO_POST_ENABLED     : {enabled}"
           )
 
           print(
-              f"FORCE_RUN                  : {force_run}"
+              f"FORCE_RUN             : {force_run}"
           )
 
           print(
-              f"LINKEDIN_VERSION           : {version}"
+              f"LINKEDIN_VERSION      : {version}"
           )
 
           print(
-              "LINKEDIN_ACCESS_TOKEN      : "
-              + ("CONFIGURED" if token else "MISSING")
+              "LINKEDIN_ACCESS_TOKEN : "
+              + (
+                  "CONFIGURED"
+                  if token
+                  else "MISSING"
+              )
           )
 
           print(
-              "LINKEDIN_PERSON_URN        : "
-              + ("CONFIGURED" if person_urn else "AUTO-DETECT")
+              "LINKEDIN_PERSON_URN   : "
+              + (
+                  "CONFIGURED"
+                  if person_urn
+                  else "AUTO-DETECT"
+              )
           )
 
           if not token:
               raise SystemExit(
-                  "LINKEDIN_ACCESS_TOKEN GitHub Secret is missing."
+                  "LINKEDIN_ACCESS_TOKEN "
+                  "GitHub Secret is missing."
               )
 
           if (
@@ -268,32 +414,33 @@ jobs:
                   "or use force_run=true."
               )
 
-          print("LinkedIn configuration PASSED.")
+          print(
+              "LinkedIn configuration PASSED."
+          )
           PY
 
       # ---------------------------------------------------------
-      # 9. Publish
+      # 7. Publish
       # ---------------------------------------------------------
-      - name: Validate exact guide URL
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-
-          allowed = {
-              "https://tinyurl.com/ybd3yfv2",
-              "https://tinyurl.com/yttbxapr",
-          }
-          post = Path("output/latest.txt").read_text(encoding="utf-8")
-
-          if not any(link in post for link in allowed):
-              raise SystemExit(
-                  "Neither approved guide URL was found in the generated post."
-              )
-
-          print("Guide URL validation PASSED.")
-          print("Approved guide links:", ", ".join(sorted(allowed)))
-          PY
 
       - name: Publish to LinkedIn
         run: |
           python src/post_to_linkedin.py
+
+      # ---------------------------------------------------------
+      # 8. Commit metadata/history changes
+      # ---------------------------------------------------------
+
+      - name: Commit generated state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add output/
+
+          if git diff --cached --quiet; then
+            echo "No output changes to commit."
+          else
+            git commit -m "chore: publish daily LinkedIn post"
+            git push
+          fi

@@ -257,12 +257,12 @@ def load_topics() -> list[dict]:
 
 
 def choose_book_link() -> str:
-    """Load exactly two guide links and rotate between them safely.
+    """Load guide links and rotate through them sequentially.
 
     The links are intentionally kept in config/book_links.txt so the user can
-    change destinations without changing Python code. We alternate from the
-    most recently published guide link instead of choosing randomly, which
-    guarantees both links are used without making the pipeline flaky.
+    change destinations without changing Python code. The most recently used
+    configured link is found in history and the next configured link is chosen.
+    Rotation wraps around, so any number of configured links is supported.
     """
     path = CONFIG / "book_links.txt"
     if not path.exists():
@@ -276,21 +276,39 @@ def choose_book_link() -> str:
                 raise RuntimeError(f"Invalid guide URL: {value}")
             links.append(value)
 
-    if len(links) != 2:
+    if not links:
         raise RuntimeError(
-            f"config/book_links.txt must contain exactly 2 guide URLs; found {len(links)}"
+            "config/book_links.txt must contain at least one guide URL."
         )
 
-    if len(set(links)) != 2:
-        raise RuntimeError("Guide links must be unique.")
+    # Remove duplicates while preserving the order configured by the user.
+    links = list(dict.fromkeys(links))
+
+    if not links:
+        raise RuntimeError(
+            "No unique guide URLs were found in config/book_links.txt."
+        )
 
     history = _load_history()
-    for item in reversed(history):
-        previous = item.get("guide_link")
-        if previous in links:
-            return links[1] if previous == links[0] else links[0]
 
-    return links[0]
+    # Find the most recently used link that still exists in the current
+    # configuration. This also handles links being added/removed over time.
+    previous = None
+    for item in reversed(history):
+        candidate = str(item.get("guide_link", "")).strip()
+        if candidate in links:
+            previous = candidate
+            break
+
+    # First run, or no previous configured link found.
+    if previous is None:
+        return links[0]
+
+    # Sequential rotation:
+    # [A, B, C] -> A -> B -> C -> A -> ...
+    current_index = links.index(previous)
+    next_index = (current_index + 1) % len(links)
+    return links[next_index]
 
 
 
