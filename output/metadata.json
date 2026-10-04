@@ -1,26 +1,26 @@
 {
-  "topic": "Project Discussion / Senior-Level",
-  "content_format": "checklist",
+  "topic": "Coding & DSA",
+  "content_format": "production",
   "question_count": 0,
   "questions": [],
   "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1326,
+  "character_count": 1252,
   "hashtags": [
     "#Java",
-    "#SpringBoot",
-    "#Microservices",
-    "#BackendDevelopment",
+    "#JavaProgramming",
+    "#BackendDeveloper",
+    "#SystemDesign",
     "#SoftwareEngineering"
   ],
-  "fingerprint": "fbcfd2368512acaa6370",
-  "generated_at_utc": "2026-10-03T10:44:34.498234+00:00",
-  "history_size": 38,
+  "fingerprint": "fe9e89dcc4da683c31e5",
+  "generated_at_utc": "2026-10-04T02:15:02.767516+00:00",
+  "history_size": 39,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v4",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7512100282592296960",
+  "linkedin_post_id": "urn:li:share:7512334442368266240",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1326,
-  "published_utf8_byte_count": 1372
+  "published_character_count": 1252,
+  "published_utf8_byte_count": 1319
 }
