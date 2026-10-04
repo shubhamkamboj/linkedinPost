@@ -1,39 +1,41 @@
-If the only argument for a Microservices decision is 'it scales', I would ask more questions.
+I learned something about Kafka the hard way.
 
-My default approach is to start with the simplest design that satisfies the current constraints.
+The system looked fine in the happy path.
 
-Then ask:
+Then we hit a situation where:
+→ duplicate processing
 
-• What is the expected scale?
-• What is the failure mode?
-• What needs independent scaling?
-• What consistency is actually required?
-• What will the team have to operate at 2 AM?
+The first instinct is usually to fix the visible symptom.
 
-For Microservices, I would pay particular attention to:
+But the better question is:
 
-→ service boundaries
-→ timeouts and retries
-→ cascading failures
-→ propagate correlation or trace context
+"What changed in the system's behavior?"
 
-The important part is the trade-off.
+For this kind of problem, I would work through it in this order:
 
-A solution can be technically impressive and still be the wrong solution if it adds operational complexity without solving a real constraint.
+1. Establish what changed — deployment, traffic, data volume or dependency behavior.
+2. Find the first signal that moved — latency, errors, queue depth, CPU, memory or throughput.
+3. Separate the symptom from the bottleneck.
+4. Apply the smallest safe mitigation.
+5. Only then decide whether the architecture needs to change.
 
-I would rather see a simple design with clear boundaries, metrics and a documented reason for each decision than a complex design assembled from every popular technology.
+One design principle I would keep in mind here:
 
-Good engineering is often less about adding capabilities and more about refusing unnecessary complexity.
+→ define replay strategy before production
 
-That's also how I would answer a senior-level interview question:
+That sounds obvious.
 
-"I chose this because of the constraint. If the constraint changes, I would revisit the decision."
+It becomes much harder when the system is already under pressure and every change has a blast radius.
 
-That answer shows judgment, not just knowledge.
+The real engineering lesson is not "always do X."
 
-📌 A strong backend answer usually covers: what it is → why it exists → when to use it → what can go wrong.
+It is knowing what evidence would make you choose X, Y or nothing at all.
+
+That is the kind of reasoning I try to bring into senior backend discussions.
+
+📌 For senior roles, connect your answer to scalability, reliability, observability, security and operational cost.
 
 📘 For Java + Spring Boot + Microservices interview preparation:
-https://tinyurl.com/ybd3yfv2
+https://tinyurl.com/yttbxapr
 
-#Java #JavaProgramming #BackendDeveloper #SystemDesign #SoftwareEngineering
+#Java #Concurrency #SpringBoot #BackendDeveloper #InterviewPrep
