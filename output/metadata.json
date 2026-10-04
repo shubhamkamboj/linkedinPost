@@ -1,10 +1,10 @@
 {
-  "topic": "Coding & DSA",
-  "content_format": "production",
+  "topic": "Microservices",
+  "content_format": "opinion",
   "question_count": 0,
   "questions": [],
   "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1252,
+  "character_count": 1500,
   "hashtags": [
     "#Java",
     "#JavaProgramming",
@@ -12,15 +12,16 @@
     "#SystemDesign",
     "#SoftwareEngineering"
   ],
-  "fingerprint": "fe9e89dcc4da683c31e5",
-  "generated_at_utc": "2026-10-04T02:15:02.767516+00:00",
-  "history_size": 39,
+  "fingerprint": "1fe4ad71586c1fe498ce",
+  "generated_at_utc": "2026-10-04T03:46:50.927829+00:00",
+  "history_size": 40,
   "question_bank_size": 518,
-  "generator": "python-standard-library-content-engine-v4",
+  "generator": "python-standard-library-content-engine-v5",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7512334442368266240",
+  "linkedin_post_id": "urn:li:share:7512357544648978432",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1252,
-  "published_utf8_byte_count": 1319
+  "published_character_count": 1500,
+  "published_utf8_byte_count": 1530,
+  "published_guide_link": "https://tinyurl.com/ybd3yfv2"
 }
