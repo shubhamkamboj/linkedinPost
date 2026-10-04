@@ -5,3 +5,6 @@ __pycache__/
 venv/
 config/linkedin_token.json
 output/*.tmp
+
+# Generated LinkedIn runtime output
+/output/

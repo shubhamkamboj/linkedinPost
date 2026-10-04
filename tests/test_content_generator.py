@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+import json
 import sys
 from pathlib import Path
 
@@ -11,17 +12,7 @@ import content_generator as cg
 
 
 NUMBERED_RE = re.compile(r"^\s*(\d+)\.\s+(.+?)\s*$")
-ALLOWED_FORMATS = {
-    "roadmap",
-    "concept",
-    "production",
-    "architecture",
-    "mistakes",
-    "senior",
-    "checklist",
-    "comparison",
-    "question_set",
-}
+ALLOWED_FORMATS = set(cg.CONTENT_FORMATS)
 
 
 def all_questions():
@@ -78,7 +69,7 @@ def validate_one_post(post, meta, max_chars=2850):
     assert hashtags == meta["hashtags"]
 
     # The guide CTA is always present.
-    assert "📘 Get the Java Backend Guide here:" in post
+    assert any(line.startswith("📘 ") for line in post.splitlines())
 
     if meta["content_format"] == "question_set":
         assert meta["question_count"] == 5
@@ -153,6 +144,36 @@ def test_fingerprint_stability():
     assert len(first) == 20
 
 
+
+def test_two_guide_links_rotate():
+    links = [
+        line.strip()
+        for line in (cg.CONFIG / "book_links.txt").read_text(encoding="utf-8").splitlines()
+        if line.strip() and not line.strip().startswith("#")
+    ]
+    assert len(links) == 2
+    first = cg.choose_book_link()
+    # Force an isolated history with first link as the latest selection.
+    history_path = cg.OUTPUT / "history.json"
+    original = history_path.read_text(encoding="utf-8") if history_path.exists() else None
+    try:
+        history_path.parent.mkdir(parents=True, exist_ok=True)
+        history_path.write_text(
+            json.dumps([{"guide_link": first}]),
+            encoding="utf-8",
+        )
+        second = cg.choose_book_link()
+        assert second in links
+        assert second != first
+    finally:
+        if original is None:
+            try:
+                history_path.unlink()
+            except FileNotFoundError:
+                pass
+        else:
+            history_path.write_text(original, encoding="utf-8")
+
 def run_all():
     tests = [
         test_question_bank_integrity,
@@ -163,6 +184,7 @@ def run_all():
         test_tight_limit_fails_without_truncation,
         test_special_character_questions_survive,
         test_fingerprint_stability,
+        test_two_guide_links_rotate,
     ]
 
     for test in tests:

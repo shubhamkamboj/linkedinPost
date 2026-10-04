@@ -151,9 +151,9 @@ jobs:
           # Question count
           content_format = metadata.get("content_format")
           allowed_formats = {
-              "roadmap", "concept", "production", "architecture",
-              "mistakes", "senior", "checklist", "comparison",
-              "question_set",
+              "story", "opinion", "production", "concept", "architecture",
+              "comparison", "mistakes", "senior", "roadmap", "checklist",
+              "myth_vs_reality", "interview_story", "question_set",
           }
 
           if content_format not in allowed_formats:
@@ -279,36 +279,21 @@ jobs:
           python - <<'PY'
           from pathlib import Path
 
-          expected = "https://tinyurl.com/ybd3yfv2"
+          allowed = {
+              "https://tinyurl.com/ybd3yfv2",
+              "https://tinyurl.com/yttbxapr",
+          }
           post = Path("output/latest.txt").read_text(encoding="utf-8")
 
-          if expected not in post:
+          if not any(link in post for link in allowed):
               raise SystemExit(
-                  "Expected guide URL is missing or was modified: "
-                  + expected
+                  "Neither approved guide URL was found in the generated post."
               )
 
           print("Guide URL validation PASSED.")
-          print("Guide URL:", expected)
+          print("Approved guide links:", ", ".join(sorted(allowed)))
           PY
 
       - name: Publish to LinkedIn
         run: |
           python src/post_to_linkedin.py
-
-      # ---------------------------------------------------------
-      # 10. Commit generated output
-      # ---------------------------------------------------------
-      - name: Commit generated post and metadata
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add output/
-
-          if git diff --cached --quiet; then
-            echo "No output changes to commit."
-          else
-            git commit -m "chore: generate and publish daily LinkedIn post"
-            git push
-          fi

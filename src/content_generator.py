@@ -19,12 +19,33 @@ PRIMARY_QUESTION_COUNT = 5
 MAX_HISTORY = 1200
 
 GLOBAL_HOOKS = [
-    "🔥 Java Backend engineering becomes much easier when you understand the reason behind the design.",
-    "⚡ A strong backend developer does more than write code — they understand what happens when the system is under pressure.",
-    "🎯 Preparing for a Java Backend role? Don't study isolated concepts. Connect them to real production behavior.",
-    "💡 One useful shift in backend preparation: stop asking only 'what is it?' and start asking 'why was it designed this way?'.",
-    "🚀 Java, Spring Boot and Microservices become much more valuable when you can connect them to real engineering decisions.",
+    "I used to think knowing the technology was the hard part. It isn't.",
+    "Here is a backend decision that looks small until production gets involved.",
+    "The easiest answer is not always the best engineering answer.",
+    "One question can expose whether someone understands a backend system deeply.",
+    "This is one of those backend topics that makes more sense after you see the failure mode.",
+    "If I had to explain this to a senior interviewer in one minute, I would start here.",
+    "A lot of backend advice sounds right until you add real traffic, failures and operational constraints.",
+    "The interesting part of backend engineering is usually what happens after the happy path.",
+    "There is a big difference between knowing a tool and knowing when not to use it.",
+    "This is the kind of trade-off I would want an engineer to explain, not just define.",
 ]
+
+TAKEAWAYS = [
+    "The useful part is not memorizing the rule. It is knowing when the rule stops being true.",
+    "Good backend decisions make the trade-off explicit: performance, reliability, consistency, complexity or cost.",
+    "If you can explain the happy path and the failure path, you understand the design much better.",
+    "Senior-level answers become stronger when they connect implementation details to production consequences.",
+    "A practical way to learn: build it, break it, observe it, then explain why it behaved that way.",
+]
+
+CTA_LINES = [
+    "📘 I keep my Java Backend preparation material here:",
+    "📘 If you're preparing for a Java Backend role, this guide may help:",
+    "📘 I put the complete Java Backend preparation path here:",
+    "📘 For Java + Spring Boot + Microservices interview preparation:",
+]
+
 
 HASHTAG_SETS = [
     ["#Java", "#SpringBoot", "#Microservices", "#BackendDevelopment", "#SoftwareEngineering"],
@@ -188,14 +209,18 @@ DEFAULT_PROFILE = {
 }
 
 CONTENT_FORMATS = [
-    "roadmap",
-    "concept",
+    "story",
+    "opinion",
     "production",
+    "concept",
     "architecture",
+    "comparison",
     "mistakes",
     "senior",
+    "roadmap",
     "checklist",
-    "comparison",
+    "myth_vs_reality",
+    "interview_story",
     "question_set",
 ]
 
@@ -232,17 +257,41 @@ def load_topics() -> list[dict]:
 
 
 def choose_book_link() -> str:
+    """Load exactly two guide links and rotate between them safely.
+
+    The links are intentionally kept in config/book_links.txt so the user can
+    change destinations without changing Python code. We alternate from the
+    most recently published guide link instead of choosing randomly, which
+    guarantees both links are used without making the pipeline flaky.
+    """
     path = CONFIG / "book_links.txt"
     if not path.exists():
         raise RuntimeError(f"Missing book link file: {path}")
+
     links = []
     for raw in path.read_text(encoding="utf-8").splitlines():
         value = raw.strip()
-        if value and not value.startswith("#") and URL_RE.fullmatch(value):
+        if value and not value.startswith("#"):
+            if not URL_RE.fullmatch(value):
+                raise RuntimeError(f"Invalid guide URL: {value}")
             links.append(value)
-    if not links:
-        raise RuntimeError("config/book_links.txt must contain at least one valid URL")
-    return RNG.choice(links)
+
+    if len(links) != 2:
+        raise RuntimeError(
+            f"config/book_links.txt must contain exactly 2 guide URLs; found {len(links)}"
+        )
+
+    if len(set(links)) != 2:
+        raise RuntimeError("Guide links must be unique.")
+
+    history = _load_history()
+    for item in reversed(history):
+        previous = item.get("guide_link")
+        if previous in links:
+            return links[1] if previous == links[0] else links[0]
+
+    return links[0]
+
 
 
 def _normalize(text: str) -> str:
@@ -303,372 +352,569 @@ def _bullets(items: list[str]) -> str:
 
 def _build_body(topic_name: str, content_format: str, questions: list[str]) -> tuple[str, list[str]]:
     profile = _profile(topic_name)
-    hook = RNG.choice(TOPIC_HOOKS.get(topic_name, []) + GLOBAL_HOOKS)
+    hook_pool = TOPIC_HOOKS.get(topic_name, []) + GLOBAL_HOOKS
+    hook = RNG.choice(hook_pool)
+
     focus = RNG.sample(profile["focus"], k=min(5, len(profile["focus"])))
     mistakes = RNG.sample(profile["mistakes"], k=min(5, len(profile["mistakes"])))
     production = RNG.sample(profile["production"], k=min(4, len(profile["production"])))
     architecture = RNG.sample(profile["architecture"], k=min(5, len(profile["architecture"])))
 
-    if content_format == "roadmap":
-        body = f"""{hook}
+    if content_format == "story":
+        problem = RNG.choice(production)
+        decision = RNG.choice(architecture)
+        body = f"""I learned something about {topic_name} the hard way.
 
-If I had to prepare for a Java Backend role today, I would not start by collecting hundreds of random interview questions.
+The system looked fine in the happy path.
 
-I would build the preparation in layers:
+Then we hit a situation where:
+→ {problem}
 
-🧩 1. FOUNDATION
-{_bullets(focus)}
+The first instinct is usually to fix the visible symptom.
 
-🏗️ 2. BACKEND ENGINEERING
-{_bullets(architecture)}
+But the better question is:
 
-🚨 3. PRODUCTION THINKING
-{_bullets(production)}
+"What changed in the system's behavior?"
 
-🎯 4. INTERVIEW PRACTICE
-For every concept, prepare four things:
-• What is it?
-• Why does it exist?
-• What trade-off does it introduce?
-• What can go wrong in production?
+For this kind of problem, I would work through it in this order:
 
-The biggest mistake is studying Java, Spring Boot, Kafka, SQL and System Design as separate subjects.
+1. Establish what changed — deployment, traffic, data volume or dependency behavior.
+2. Find the first signal that moved — latency, errors, queue depth, CPU, memory or throughput.
+3. Separate the symptom from the bottleneck.
+4. Apply the smallest safe mitigation.
+5. Only then decide whether the architecture needs to change.
 
-They are connected.
-A slow API can become a database problem.
-A database problem can become a thread-pool problem.
-A thread-pool problem can become a microservices timeout problem.
+One design principle I would keep in mind here:
 
-That connection is what turns technology knowledge into backend engineering."""
-        seed = focus + architecture + production
+→ {decision}
 
-    elif content_format == "concept":
-        concept = RNG.choice(focus)
-        body = f"""{hook}
+That sounds obvious.
 
-Let's take one backend concept that looks simple on paper:
+It becomes much harder when the system is already under pressure and every change has a blast radius.
 
-👉 {concept}
+The real engineering lesson is not "always do X."
 
-The useful way to study a concept is not to stop at the definition.
+It is knowing what evidence would make you choose X, Y or nothing at all.
 
-Ask these questions instead:
+That is the kind of reasoning I try to bring into senior backend discussions."""
+        seed = [problem, decision, *production, *architecture]
 
-1. Why was this designed this way?
-2. What problem does it solve?
-3. What does it cost in CPU, memory, latency or complexity?
-4. What happens when traffic or data volume grows?
-5. What happens when a dependency fails?
+    elif content_format == "opinion":
+        statement = RNG.choice([
+            f"You probably don't need a more complicated {topic_name} design.",
+            f"Knowing {topic_name} is not the same as knowing when to use it.",
+            f"The biggest {topic_name} mistake is usually not a syntax mistake.",
+            f"If the only argument for a {topic_name} decision is 'it scales', I would ask more questions.",
+        ])
+        body = f"""{statement}
 
-For {topic_name}, this mindset is especially useful because the same implementation can behave very differently under production load.
+My default approach is to start with the simplest design that satisfies the current constraints.
 
-A good learning loop is:
+Then ask:
 
-📚 Understand the abstraction
-→ 🔍 Understand the implementation
-→ ⚙️ Test the behavior
-→ 📈 Measure the performance
-→ 🚨 Study the failure mode
-→ 🏗️ Decide when you would actually use it
+• What is the expected scale?
+• What is the failure mode?
+• What needs independent scaling?
+• What consistency is actually required?
+• What will the team have to operate at 2 AM?
 
-That is a much stronger preparation strategy than memorizing definitions.
+For {topic_name}, I would pay particular attention to:
 
-💡 A useful rule: if you cannot explain the failure mode, you probably do not understand the concept deeply enough yet.
+→ {focus[0]}
+→ {focus[1]}
+→ {production[0]}
+→ {architecture[0]}
 
-For interview preparation, keep one small runnable example for every important concept. It gives you something concrete to reason about instead of relying only on memorized wording."""
-        seed = [concept, *focus]
+The important part is the trade-off.
+
+A solution can be technically impressive and still be the wrong solution if it adds operational complexity without solving a real constraint.
+
+I would rather see a simple design with clear boundaries, metrics and a documented reason for each decision than a complex design assembled from every popular technology.
+
+Good engineering is often less about adding capabilities and more about refusing unnecessary complexity.
+
+That's also how I would answer a senior-level interview question:
+
+"I chose this because of the constraint. If the constraint changes, I would revisit the decision."
+
+That answer shows judgment, not just knowledge."""
+        seed = [statement, *focus, *architecture]
 
     elif content_format == "production":
         scenario = RNG.choice(production)
-        body = f"""🚨 PRODUCTION SCENARIO — {topic_name.upper()}
+        body = f"""Your backend is slow.
 
-Imagine the application was healthy yesterday.
-Today, users suddenly start reporting slow requests.
+The database looks healthy.
+CPU looks normal.
+The service is technically "up."
 
-One of the symptoms is:
-👉 {scenario}
+But users are still waiting.
 
-What should you do first?
+One possible signal is:
 
-Don't immediately restart the service.
-Don't immediately increase the instance size.
-Don't change five things at once.
+→ {scenario}
 
-Start by narrowing the search space:
+This is where production debugging becomes different from interview theory.
 
-🔎 CHECK 1 — Recent changes
+I would not start by changing configuration.
+
+I would start by narrowing the search space.
+
+CHECK 1 — What changed?
 • deployment
+• traffic
+• data volume
+• dependency behavior
 • configuration
-• traffic pattern
-• database/schema changes
 
-📊 CHECK 2 — Metrics
-• latency
-• throughput
+CHECK 2 — Where did latency start?
+Look at request traces and downstream timings.
+
+CHECK 3 — Is the resource saturated?
+• threads
+• connection pools
+• queues
 • CPU
 • memory
-• thread pools / queues
 
-🧵 CHECK 3 — Dependencies
-• database
-• cache
-• Kafka
-• downstream APIs
+CHECK 4 — Is a dependency amplifying the problem?
+Retries and timeouts can turn a small slowdown into a large incident.
 
-📝 CHECK 4 — Logs + traces
-Look for the first component where the latency or error rate changes.
+CHECK 5 — Can we mitigate without hiding the root cause?
 
-🛠️ CHECK 5 — Mitigate safely
-Reduce user impact first, then continue the root-cause investigation.
+The biggest mistake is changing several variables at once.
 
-The important lesson:
-Production debugging is a process of elimination.
-The goal is not to guess the root cause faster.
-The goal is to collect the right evidence faster."""
-        seed = [scenario, *production]
+If you do that, you may recover the system without learning what actually broke it.
+
+A production engineer should be able to say:
+
+"Here is the evidence, here is my current hypothesis, and here is the next measurement I need."
+
+That is much stronger than guessing quickly."""
+        seed = [scenario, *production, *architecture]
+
+    elif content_format == "concept":
+        concept = RNG.choice(focus)
+        body = f"""Let's make {concept} practical.
+
+Instead of starting with the definition, imagine you are reviewing a production system that uses it.
+
+The first questions I would ask are:
+
+Why does it exist?
+What problem does it solve?
+What does it cost?
+When does that cost become visible?
+What happens when the surrounding system is under pressure?
+
+For {topic_name}, the useful learning loop is:
+
+Understand
+→ implement a tiny example
+→ inspect what happens
+→ break the happy path
+→ measure it
+→ explain the trade-off
+
+For example, one implementation decision may look harmless during local testing but become expensive when:
+
+• data volume grows
+• concurrency increases
+• a dependency becomes slow
+• retries start stacking up
+• memory pressure changes the runtime behavior
+
+That is why I prefer learning concepts through behavior rather than definitions.
+
+If I cannot explain both the normal path and the failure path, I don't consider the topic finished.
+
+And that is exactly where senior interviews often move: away from "what is it?" and toward "what happens when it goes wrong?"."""
+        seed = [concept, *focus, *production]
 
     elif content_format == "architecture":
-        body = f"""🏗️ JAVA BACKEND ARCHITECTURE — {topic_name}
+        body = f"""A backend architecture should answer one uncomfortable question:
 
-A scalable design is not just a collection of technologies.
-It is a set of decisions about boundaries, failure and trade-offs.
+What happens when one part of the system becomes slow, unavailable or overloaded?
 
-For a backend system, I would think through these layers:
+For a {topic_name} system, I would reason through these boundaries:
 
-1️⃣ API LAYER
-• validation
-• authentication
-• rate limiting
-• idempotency
+1. REQUEST
+Validation, authentication, idempotency and rate limits.
 
-2️⃣ BUSINESS LAYER
-• clear responsibilities
-• transaction boundaries
-• domain rules
+2. BUSINESS LOGIC
+Clear ownership, transaction boundaries and predictable failure behavior.
 
-3️⃣ DATA LAYER
-• access patterns
-• indexes
-• caching
-• consistency
+3. DATA
+Access patterns, indexes, caching, consistency and connection limits.
 
-4️⃣ ASYNC LAYER
-• Kafka / queues
-• retries
-• dead-letter handling
-• replay strategy
+4. ASYNC WORK
+Queues, Kafka, retries, DLQ and replay strategy.
 
-5️⃣ OBSERVABILITY
-• metrics
-• logs
-• traces
-• alerts
+5. OBSERVABILITY
+Metrics, logs, traces and alerts that tell us where the problem started.
 
-6️⃣ FAILURE HANDLING
-• timeouts
-• circuit breakers
-• graceful degradation
-• recovery
+6. RECOVERY
+Timeouts, circuit breakers, graceful degradation and recovery paths.
 
-The technology choice matters.
-But the more important question is:
+The technology list is the easy part.
 
-👉 What happens when this component becomes slow, unavailable or overloaded?
+The harder part is explaining why each boundary exists.
 
-That question should be part of every senior backend design discussion.
+For example:
 
-Before finalizing a design, ask one more question: "What is the simplest version that can handle today's scale, and what signal tells me it is time to evolve it?"
+→ {architecture[0]}
+→ {architecture[1]}
+→ {architecture[2]}
 
-Good architecture leaves room to grow without introducing unnecessary complexity on day one."""
+If a design cannot explain its failure behavior, it is not finished.
+
+I also prefer an evolutionary design.
+
+Start with the simplest architecture that satisfies today's constraints.
+
+Then define the signal that would justify the next level of complexity.
+
+That keeps architecture driven by evidence instead of fashion."""
         seed = architecture + [topic_name]
-
-    elif content_format == "mistakes":
-        body = f"""⚠️ 5 COMMON MISTAKES WHEN LEARNING {topic_name.upper()}
-
-A lot of backend preparation focuses on collecting more concepts.
-Sometimes the bigger improvement comes from removing bad habits.
-
-1. {mistakes[0].capitalize()}.
-
-2. {mistakes[1].capitalize()}.
-
-3. {mistakes[2].capitalize()}.
-
-4. {mistakes[3].capitalize()}.
-
-5. {mistakes[4].capitalize()}.
-
-Instead, try this approach:
-
-✅ Learn the concept
-✅ Build a tiny example
-✅ Break the example intentionally
-✅ Observe the logs/metrics
-✅ Measure the behavior
-✅ Write down the trade-off
-
-For senior interviews, this becomes even more important.
-
-You are not only expected to know how something works.
-You may be asked why you chose it, what alternative you rejected and what happens when it fails.
-
-That is where practical engineering thinking becomes visible.
-
-The objective is not to avoid every mistake. It is to recognize the risk early, measure it and build guardrails around it.
-
-A production-ready engineer thinks about the unhappy path before the incident forces the conversation."""
-        seed = mistakes
-
-    elif content_format == "senior":
-        body = f"""🎯 WHAT CHANGES WHEN YOU PREPARE FOR A SENIOR JAVA BACKEND ROLE?
-
-At junior level, the question is often:
-👉 Can you implement this correctly?
-
-At senior level, the discussion often expands to:
-👉 Can you make the system reliable when the environment is not perfect?
-
-For {topic_name}, prepare to discuss:
-
-• scalability
-• performance
-• concurrency
-• security
-• observability
-• failure handling
-• operational cost
-• maintainability
-
-A useful answer structure is:
-
-1. State the simplest correct approach.
-2. Explain the trade-off.
-3. Mention the bottleneck.
-4. Explain how you would observe it.
-5. Explain what you would do when it fails.
-
-For example, instead of saying:
-"We use caching for performance."
-
-Go one level deeper:
-
-"What data can be stale?"
-"What is the invalidation strategy?"
-"What happens during a cache miss storm?"
-"What happens if Redis is unavailable?"
-
-The second style demonstrates engineering thinking, not just terminology.
-
-A senior-level discussion also benefits from one concrete example: mention the constraint, the decision you made, the trade-off you accepted and how you verified the result.
-
-That makes the answer specific without turning it into a memorized script."""
-        seed = [topic_name, *architecture, *production]
-
-    elif content_format == "checklist":
-        body = f"""📋 JAVA BACKEND PREPARATION CHECKLIST — {topic_name}
-
-Before calling a topic 'prepared', check whether you can explain all of these without opening your notes:
-
-☐ Core concept
-☐ Internal working
-☐ Time / space or runtime implications
-☐ Common production use case
-☐ Common failure mode
-☐ Performance bottleneck
-☐ Security consideration
-☐ Monitoring / observability
-☐ Alternative approach
-☐ Trade-off
-
-Then test yourself with this exercise:
-
-🎯 Explain the concept in 30 seconds.
-
-🎯 Explain it again to a teammate who knows Java but not this topic.
-
-🎯 Explain what changes when traffic becomes 10x larger.
-
-🎯 Explain what you would monitor in production.
-
-🎯 Explain what you would do if the dependency fails.
-
-If you can answer those five layers, you are no longer studying only for a definition-based interview.
-
-You are preparing to discuss how software behaves in the real world.
-
-That is the shift from "I know this technology" to "I can own this part of a production system."
-
-Keep the checklist practical: explain, implement, break, measure and improve."""
-        seed = focus + production
 
     elif content_format == "comparison":
         a, b = RNG.sample(focus, 2)
-        body = f"""⚖️ BACKEND ENGINEERING: DON'T ASK ONLY 'WHICH IS BETTER?'
+        body = f"""Two backend approaches can both be correct.
 
-A better question is:
-👉 Which option fits the problem and constraints?
+The interesting question is not:
 
-Today, compare two ideas from {topic_name}:
+"Which one is better?"
 
-🔹 OPTION A
-{a}
+It is:
 
-🔹 OPTION B
-{b}
+"Which one fits the constraints?"
 
-Evaluate them across:
+For {topic_name}, compare:
 
-• performance
-• complexity
-• scalability
+OPTION A
+→ {a}
+
+OPTION B
+→ {b}
+
+I would evaluate them against:
+
+• latency
+• throughput
+• consistency
 • failure behavior
-• operational cost
-• team familiarity
+• operational complexity
+• team expertise
 • observability
-• future maintenance
+• cost
 
-There is rarely one universal winner.
+A faster solution can be worse if it is difficult to operate.
 
-For example, a solution that is faster may introduce more operational complexity.
-A simpler solution may be perfectly adequate until traffic or data volume changes.
+A simpler solution can be better until a specific scale or reliability requirement changes.
 
-A senior engineer should be able to explain:
+For me, a strong engineering answer sounds like:
 
-"I would choose X because of these constraints. If the constraints change, I would reconsider the decision."
+"I would choose A because of these constraints. If the constraints change, I would move toward B."
 
-That is much more useful than memorizing a technology comparison table.
+That is more useful than memorizing a comparison table.
 
-The right comparison changes with traffic, consistency requirements, team size, operational maturity and failure tolerance. Context is part of the answer."""
+Technology decisions are conditional.
+
+The context is part of the answer.
+
+One more test I like to use: imagine the traffic, consistency requirement or team size changes tomorrow. If the decision would still be correct, you probably chose a robust boundary. If not, be explicit about the trigger that would make you switch.
+
+That makes a comparison useful in design reviews, not just interview preparation."""
         seed = [a, b, *architecture]
+
+    elif content_format == "mistakes":
+        body = f"""One of the easiest ways to improve your {topic_name} skills is to study the mistakes engineers repeatedly make.
+
+Here are five I would watch for:
+
+1. {mistakes[0]}.
+2. {mistakes[1]}.
+3. {mistakes[2]}.
+4. {mistakes[3]}.
+5. {mistakes[4]}.
+
+But spotting the mistake is only half the skill.
+
+For each one, ask:
+
+→ What signal would expose it?
+→ What is the safest mitigation?
+→ What is the long-term fix?
+→ What trade-off does the fix introduce?
+
+For example, a system may appear healthy until {production[0]}.
+
+That is why I like this learning loop:
+
+learn → implement → break → observe → measure → explain.
+
+It produces a much stronger engineering instinct than collecting definitions.
+
+The goal is not to design a perfect system.
+
+The goal is to recognize risky decisions early enough to do something about them."""
+        seed = mistakes + production
+
+    elif content_format == "senior":
+        body = f"""There is a difference between answering a backend question and answering it like an engineer who owns the system.
+
+For {topic_name}, I would prepare at three levels.
+
+LEVEL 1 — Correctness
+Can I explain how it works?
+
+LEVEL 2 — Trade-offs
+Can I explain why I would choose it over an alternative?
+
+LEVEL 3 — Production
+Can I explain what happens when load increases, dependencies fail or data grows?
+
+That third level is where many senior discussions become interesting.
+
+For example:
+
+Instead of:
+"Use caching for performance."
+
+Ask:
+• What can become stale?
+• How is invalidation handled?
+• What happens during a cache miss storm?
+• What happens if the cache disappears?
+
+Instead of:
+"Use retries."
+
+Ask:
+• Which failures are retryable?
+• How many times?
+• With what backoff?
+• Can retries create a retry storm?
+• Is the operation idempotent?
+
+That is the mindset I would bring to a senior interview.
+
+Don't just explain the happy path.
+
+Explain the decision, the evidence, the failure mode and the operational consequence."""
+        seed = [topic_name, *architecture, *production]
+
+    elif content_format == "roadmap":
+        body = f"""If I had to prepare for a Java Backend role again, I would not start by collecting hundreds of interview questions.
+
+I would build depth in layers.
+
+1. FUNDAMENTALS
+→ {focus[0]}
+→ {focus[1]}
+→ {focus[2]}
+
+2. BACKEND ENGINEERING
+→ {architecture[0]}
+→ {architecture[1]}
+→ {architecture[2]}
+
+3. PRODUCTION THINKING
+→ {production[0]}
+→ {production[1]}
+→ {production[2]}
+
+4. INTERVIEW THINKING
+For every important concept, prepare:
+→ what it is
+→ why it exists
+→ trade-offs
+→ failure mode
+→ one production example
+
+The biggest mistake is treating Java, Spring Boot, Kafka, SQL and System Design as separate islands.
+
+They connect.
+
+A slow database can create thread contention.
+Thread contention can increase request latency.
+Latency can trigger retries.
+Retries can amplify load on the same dependency.
+
+That chain is what you should learn to reason about.
+
+The goal is not to know every tool.
+
+The goal is to know how the pieces behave together."""
+        seed = focus + architecture + production
+
+    elif content_format == "checklist":
+        body = f"""Before I call a {topic_name} topic "prepared", I want to be able to answer more than its definition.
+
+I should be able to explain:
+
+□ the core idea
+□ how it works internally
+□ the performance implications
+□ the common production use case
+□ the failure mode
+□ the security implications
+□ what I would monitor
+□ what alternative I considered
+□ what trade-off I accepted
+
+Then I would do one final exercise:
+
+Explain it in 30 seconds.
+
+Explain it to another Java developer.
+
+Explain what changes when traffic becomes 10x larger.
+
+Explain what you would monitor in production.
+
+Explain what you would do if a dependency fails.
+
+If those answers are clear, you are preparing for engineering discussions rather than only definition-based interviews.
+
+The last step is the most useful:
+
+Take one thing you learned and intentionally break it.
+
+That's where the real understanding usually starts.
+
+For an interview, this also gives you a concrete story: what you expected, what actually happened, what you measured and what you changed. Specific reasoning is much easier to defend than a memorized definition."""
+        seed = focus + production
+
+    elif content_format == "myth_vs_reality":
+        myth = RNG.choice([
+            "More technology automatically means a more scalable system.",
+            "More threads automatically mean more throughput.",
+            "A cache automatically makes an application faster.",
+            "Retries automatically make a distributed system more reliable.",
+            "Microservices automatically make a system easier to scale.",
+        ])
+        reality = RNG.choice([
+            production[0],
+            production[1],
+            architecture[0],
+        ])
+        body = f"""MYTH vs REALITY — {topic_name}
+
+MYTH:
+"{myth}"
+
+REALITY:
+The result depends on the bottleneck and the constraints.
+
+For example, in a real backend system you may actually run into:
+
+→ {reality}
+
+Adding more components without removing the bottleneck can make the system harder to operate without making it faster.
+
+A better way to reason about {topic_name} is:
+
+1. Identify the constraint.
+2. Measure the current behavior.
+3. Change one variable.
+4. Measure again.
+5. Check the new failure mode.
+
+This matters because optimizations move complexity.
+
+A cache can introduce invalidation problems.
+Retries can create load amplification.
+Async processing can introduce ordering and observability challenges.
+More services can introduce network failure.
+
+The mature engineering question is not "Does this technology work?"
+
+It is:
+
+"Under which constraints does this decision make sense?"
+
+That is the difference between using a tool and engineering a system."""
+        seed = [myth, reality, *architecture]
+
+    elif content_format == "interview_story":
+        question = RNG.choice(questions)
+        follow = RNG.choice([q for t in ALL_TOPICS_CACHE for q in t["questions"] if q != question]) if ALL_TOPICS_CACHE else question
+        body = f"""An interview question can look easy until the follow-up arrives.
+
+The question:
+
+"{question}"
+
+A shallow answer can stop after the definition.
+
+A stronger answer continues:
+
+→ How does it work?
+→ Why would you choose it?
+→ What is the trade-off?
+→ What happens under high load?
+→ What happens when a dependency fails?
+
+And then comes the follow-up:
+
+"{follow}"
+
+That is where preparation becomes useful.
+
+I don't think senior interview preparation should be about memorizing 500 perfect answers.
+
+It should train you to stay calm when the interviewer changes one constraint.
+
+Traffic becomes 10x larger.
+
+A dependency becomes slow.
+
+Data becomes much bigger.
+
+The requirement changes from eventual consistency to stronger consistency.
+
+Your answer should evolve with the constraint.
+
+That's the skill worth practicing.
+
+A useful exercise is to answer the original question, then deliberately introduce one failure or scale constraint and answer it again. If your design changes for a good reason, you are practicing the kind of adaptive thinking that senior interviews are trying to measure."""
+        seed = [question, follow]
 
     elif content_format == "question_set":
         selected = questions[:PRIMARY_QUESTION_COUNT]
         followup = RNG.choice([q for t in ALL_TOPICS_CACHE if t["name"] != topic_name for q in t["questions"]]) if ALL_TOPICS_CACHE else selected[0]
-        body = f"""🔥 INTERVIEW PRACTICE — {topic_name}
+        body = f"""A good interview question is not valuable because it has a memorized answer.
 
-Don't just read the answers.
-Pause after each question and explain your reasoning out loud.
+It is valuable because it creates a useful follow-up discussion.
+
+Try these today:
 
 {_numbered(selected)}
 
-🎯 FOLLOW-UP
+FOLLOW-UP
 {len(selected) + 1}. {followup}
 
-For every answer, try to cover:
+For each answer, cover:
 • what it is
 • how it works
-• when to use it
+• why you would use it
 • trade-offs
-• production failure mode
+• failure mode
+• what you would monitor
 
-If you can explain the first answer but struggle with the follow-up, that's usually a signal that the concept needs another layer of study.
+Then change one constraint.
 
-The goal is not to memorize 500 questions.
-The goal is to become comfortable with the next question.
+What if traffic becomes 10x larger?
+What if the dependency becomes slow?
+What if the operation is retried?
+What if the data becomes 100x larger?
 
-🎯 Senior angle: explain not only the answer, but also the trade-off and what you would monitor in production.
+The goal is not to finish another list of questions.
 
-🔥 Bonus practice: take the question that felt easiest and ask yourself what would change if traffic, data volume or failure rate became 10x larger."""
+The goal is to become comfortable reasoning when the interviewer changes the problem.
+
+A strong answer should also make your assumptions visible. Say what you are optimizing for, what constraint matters most and what you would monitor after the system goes live."""
         seed = selected + [followup]
 
     else:
@@ -682,13 +928,14 @@ ALL_TOPICS_CACHE: list[dict] = []
 
 
 def _append_cta(body: str, book_link: str, hashtags: list[str]) -> str:
-    # Keep the raw URL on its own line. LinkedIn documents external-link
-    # engagement for post links, and a standalone URL is easiest to detect.
     return (
-        f"{body.strip()}\n\n{RNG.choice(TAKEAWAYS)}"
-        f"\n\n📘 Get the Java Backend Guide here:\n{book_link}"
-        f"\n\n{' '.join(hashtags)}"
+        f"{body.strip()}\n\n"
+        f"{RNG.choice(TAKEAWAYS)}\n\n"
+        f"{RNG.choice(CTA_LINES)}\n"
+        f"{book_link}\n\n"
+        f"{' '.join(hashtags)}"
     ).strip()
+
 
 
 def _validate_structure(post: str, *, book_link: str, max_chars: int, content_format: str) -> None:
@@ -758,6 +1005,7 @@ def generate_post(book_link: str, max_chars: int = DEFAULT_MAX_CHARS, *, record_
                 "content_format": content_format,
                 "questions": questions if content_format == "question_set" else [],
                 "generated_at_utc": generated_at,
+                "guide_link": book_link,
             })
             _save_history(history)
 
@@ -773,7 +1021,7 @@ def generate_post(book_link: str, max_chars: int = DEFAULT_MAX_CHARS, *, record_
             "generated_at_utc": generated_at,
             "history_size": len(history),
             "question_bank_size": sum(len(t["questions"]) for t in topics),
-            "generator": "python-standard-library-content-engine-v4",
+            "generator": "python-standard-library-content-engine-v5",
         }
         return post, metadata
 

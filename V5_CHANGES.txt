@@ -1,0 +1,24 @@
+JAVA LINKEDIN CONTENT ENGINE V5
+
+Implemented:
+1. Content engine expanded from 9 repetitive formats to 13:
+   story, opinion, production, concept, architecture, comparison, mistakes,
+   senior, roadmap, checklist, myth_vs_reality, interview_story, question_set.
+2. Stronger hooks, more first-person/opinion language, scenario-driven writing,
+   fewer generic "lesson" patterns, and more natural endings.
+3. CTA wording rotates instead of repeating the same sentence.
+4. Exactly 5 hashtags remain mandatory.
+5. Two guide URLs are retained in config/book_links.txt.
+6. Guide links rotate based on the last published guide link instead of random
+   selection, so both links are used predictably.
+7. Generator validates exactly two unique HTTPS guide URLs.
+8. Workflow accepts either approved guide URL.
+9. Workflow validation supports all V5 formats and only enforces question
+   metadata for question_set posts.
+10. Removed the workflow step that commits generated output/ files back to Git.
+11. .gitignore includes /output/ as generated runtime state.
+12. Tests expanded to verify guide-link rotation.
+
+Verification:
+ALL TESTS PASSED: 9/9
+500 generated posts passed the mixed-format validation.
