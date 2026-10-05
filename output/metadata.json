@@ -1,27 +1,27 @@
 {
-  "topic": "Production Scenarios / Troubleshooting",
-  "content_format": "comparison",
+  "topic": "Project Discussion / Senior-Level",
+  "content_format": "architecture",
   "question_count": 0,
   "questions": [],
-  "guide_link": "https://tinyurl.com/yttbxapr",
-  "character_count": 1473,
+  "guide_link": "https://tinyurl.com/ybd3yfv2",
+  "character_count": 1515,
   "hashtags": [
-    "#Java",
-    "#JavaProgramming",
-    "#BackendDeveloper",
-    "#SystemDesign",
-    "#SoftwareEngineering"
+    "#JavaDeveloper",
+    "#CoreJava",
+    "#SpringBoot",
+    "#BackendEngineering",
+    "#TechCareers"
   ],
-  "fingerprint": "94572d770869ed23fe1c",
-  "generated_at_utc": "2026-10-05T12:59:00.532011+00:00",
-  "history_size": 45,
+  "fingerprint": "2b9bce59406ab608ae63",
+  "generated_at_utc": "2026-10-05T16:34:03.349010+00:00",
+  "history_size": 46,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v5",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7512858888891789313",
+  "linkedin_post_id": "urn:li:share:7512913007275032576",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1473,
-  "published_utf8_byte_count": 1499,
-  "published_guide_link": "https://tinyurl.com/yttbxapr"
+  "published_character_count": 1515,
+  "published_utf8_byte_count": 1527,
+  "published_guide_link": "https://tinyurl.com/ybd3yfv2"
 }
