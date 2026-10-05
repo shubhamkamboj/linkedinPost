@@ -1,27 +1,27 @@
 {
-  "topic": "Kafka",
-  "content_format": "story",
+  "topic": "Spring Security / APIs / Distributed Systems",
+  "content_format": "myth_vs_reality",
   "question_count": 0,
   "questions": [],
-  "guide_link": "https://tinyurl.com/yttbxapr",
-  "character_count": 1364,
+  "guide_link": "https://tinyurl.com/ybd3yfv2",
+  "character_count": 1370,
   "hashtags": [
     "#Java",
-    "#Concurrency",
-    "#SpringBoot",
+    "#JavaProgramming",
     "#BackendDeveloper",
-    "#InterviewPrep"
+    "#SystemDesign",
+    "#SoftwareEngineering"
   ],
-  "fingerprint": "332fbe5015417d79d667",
-  "generated_at_utc": "2026-10-04T15:52:37.424824+00:00",
-  "history_size": 41,
+  "fingerprint": "d47ce612998303bb381d",
+  "generated_at_utc": "2026-10-05T03:28:37.867644+00:00",
+  "history_size": 42,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v5",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7512540193707724800",
+  "linkedin_post_id": "urn:li:share:7512715348320653312",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1364,
-  "published_utf8_byte_count": 1378,
-  "published_guide_link": "https://tinyurl.com/yttbxapr"
+  "published_character_count": 1370,
+  "published_utf8_byte_count": 1380,
+  "published_guide_link": "https://tinyurl.com/ybd3yfv2"
 }
