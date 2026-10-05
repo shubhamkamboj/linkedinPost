@@ -1,27 +1,27 @@
 {
   "topic": "Core Java",
-  "content_format": "roadmap",
+  "content_format": "concept",
   "question_count": 0,
   "questions": [],
-  "guide_link": "https://tinyurl.com/yttbxapr",
-  "character_count": 1446,
+  "guide_link": "https://tinyurl.com/ybd3yfv2",
+  "character_count": 1401,
   "hashtags": [
     "#JavaDeveloper",
-    "#Kafka",
-    "#Microservices",
+    "#CoreJava",
+    "#SpringBoot",
     "#BackendEngineering",
-    "#JavaInterview"
+    "#TechCareers"
   ],
-  "fingerprint": "19cdde9f45061f082d1d",
-  "generated_at_utc": "2026-10-05T06:04:36.663637+00:00",
-  "history_size": 43,
+  "fingerprint": "78cb291db97256441ff2",
+  "generated_at_utc": "2026-10-05T08:07:05.395174+00:00",
+  "history_size": 44,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v5",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7512754602694438912",
+  "linkedin_post_id": "urn:li:share:7512785424977760256",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1446,
-  "published_utf8_byte_count": 1480,
-  "published_guide_link": "https://tinyurl.com/yttbxapr"
+  "published_character_count": 1401,
+  "published_utf8_byte_count": 1427,
+  "published_guide_link": "https://tinyurl.com/ybd3yfv2"
 }
