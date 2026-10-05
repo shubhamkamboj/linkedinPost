@@ -1,27 +1,27 @@
 {
-  "topic": "Spring Security / APIs / Distributed Systems",
-  "content_format": "myth_vs_reality",
+  "topic": "Core Java",
+  "content_format": "roadmap",
   "question_count": 0,
   "questions": [],
-  "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1370,
+  "guide_link": "https://tinyurl.com/yttbxapr",
+  "character_count": 1446,
   "hashtags": [
-    "#Java",
-    "#JavaProgramming",
-    "#BackendDeveloper",
-    "#SystemDesign",
-    "#SoftwareEngineering"
+    "#JavaDeveloper",
+    "#Kafka",
+    "#Microservices",
+    "#BackendEngineering",
+    "#JavaInterview"
   ],
-  "fingerprint": "d47ce612998303bb381d",
-  "generated_at_utc": "2026-10-05T03:28:37.867644+00:00",
-  "history_size": 42,
+  "fingerprint": "19cdde9f45061f082d1d",
+  "generated_at_utc": "2026-10-05T06:04:36.663637+00:00",
+  "history_size": 43,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v5",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7512715348320653312",
+  "linkedin_post_id": "urn:li:share:7512754602694438912",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1370,
-  "published_utf8_byte_count": 1380,
-  "published_guide_link": "https://tinyurl.com/ybd3yfv2"
+  "published_character_count": 1446,
+  "published_utf8_byte_count": 1480,
+  "published_guide_link": "https://tinyurl.com/yttbxapr"
 }
