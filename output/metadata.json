@@ -1,27 +1,27 @@
 {
-  "topic": "Core Java",
-  "content_format": "production",
+  "topic": "Redis / Caching / Performance",
+  "content_format": "mistakes",
   "question_count": 0,
   "questions": [],
-  "guide_link": "https://tinyurl.com/yttbxapr",
-  "character_count": 1437,
+  "guide_link": "https://tinyurl.com/ybd3yfv2",
+  "character_count": 1262,
   "hashtags": [
-    "#JavaBackend",
-    "#SpringBoot",
-    "#Microservices",
+    "#Java",
+    "#JavaProgramming",
+    "#BackendDeveloper",
     "#SystemDesign",
-    "#InterviewPreparation"
+    "#SoftwareEngineering"
   ],
-  "fingerprint": "4d7ebb7d1673d66424e8",
-  "generated_at_utc": "2026-10-06T02:02:47.357991+00:00",
-  "history_size": 47,
+  "fingerprint": "6d9c9e5f21ff19c53963",
+  "generated_at_utc": "2026-10-06T06:44:10.166813+00:00",
+  "history_size": 48,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v5",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7513056133260099584",
+  "linkedin_post_id": "urn:li:share:7513126945472135169",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1437,
-  "published_utf8_byte_count": 1475,
-  "published_guide_link": "https://tinyurl.com/yttbxapr"
+  "published_character_count": 1262,
+  "published_utf8_byte_count": 1286,
+  "published_guide_link": "https://tinyurl.com/ybd3yfv2"
 }

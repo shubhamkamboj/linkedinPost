@@ -1,56 +1,37 @@
-Your backend is slow.
+One of the easiest ways to improve your Redis / Caching / Performance skills is to study the mistakes engineers repeatedly make.
 
-The database looks healthy.
-CPU looks normal.
-The service is technically "up."
+Here are five I would watch for:
 
-But users are still waiting.
+1. caching everything.
+2. ignoring stampedes.
+3. using unlimited TTLs.
+4. treating Redis as the source of truth without a deliberate design.
+5. using distributed locks without expiry and ownership.
 
-One possible signal is:
+But spotting the mistake is only half the skill.
 
-→ collection contention under concurrent traffic
+For each one, ask:
 
-This is where production debugging becomes different from interview theory.
+→ What signal would expose it?
+→ What is the safest mitigation?
+→ What is the long-term fix?
+→ What trade-off does the fix introduce?
 
-I would not start by changing configuration.
+For example, a system may appear healthy until Redis availability issues.
 
-I would start by narrowing the search space.
+That is why I like this learning loop:
 
-CHECK 1 — What changed?
-• deployment
-• traffic
-• data volume
-• dependency behavior
-• configuration
+learn → implement → break → observe → measure → explain.
 
-CHECK 2 — Where did latency start?
-Look at request traces and downstream timings.
+It produces a much stronger engineering instinct than collecting definitions.
 
-CHECK 3 — Is the resource saturated?
-• threads
-• connection pools
-• queues
-• CPU
-• memory
+The goal is not to design a perfect system.
 
-CHECK 4 — Is a dependency amplifying the problem?
-Retries and timeouts can turn a small slowdown into a large incident.
+The goal is to recognize risky decisions early enough to do something about them.
 
-CHECK 5 — Can we mitigate without hiding the root cause?
+📌 The goal is not to memorize more terms. The goal is to understand the trade-off, failure mode and production impact behind each decision.
 
-The biggest mistake is changing several variables at once.
+📘 If you're preparing for a Java Backend role, this guide may help:
+https://tinyurl.com/ybd3yfv2
 
-If you do that, you may recover the system without learning what actually broke it.
-
-A production engineer should be able to say:
-
-"Here is the evidence, here is my current hypothesis, and here is the next measurement I need."
-
-That is much stronger than guessing quickly.
-
-📌 For senior roles, connect your answer to scalability, reliability, observability, security and operational cost.
-
-📘 I keep my Java Backend preparation material here:
-https://tinyurl.com/yttbxapr
-
-#JavaBackend #SpringBoot #Microservices #SystemDesign #InterviewPreparation
+#Java #JavaProgramming #BackendDeveloper #SystemDesign #SoftwareEngineering
