@@ -1,27 +1,27 @@
 {
-  "topic": "Kafka",
-  "content_format": "concept",
+  "topic": "Coding & DSA",
+  "content_format": "opinion",
   "question_count": 0,
   "questions": [],
-  "guide_link": "https://tinyurl.com/yttbxapr",
-  "character_count": 1379,
+  "guide_link": "https://tinyurl.com/ybd3yfv2",
+  "character_count": 1480,
   "hashtags": [
-    "#JavaDeveloper",
-    "#CoreJava",
+    "#JavaBackend",
     "#SpringBoot",
-    "#BackendEngineering",
-    "#TechCareers"
+    "#Microservices",
+    "#SystemDesign",
+    "#InterviewPreparation"
   ],
-  "fingerprint": "92f999b7c1eef2498222",
-  "generated_at_utc": "2026-10-07T06:19:58.061213+00:00",
-  "history_size": 51,
+  "fingerprint": "3042a30b2d1e31dabb2d",
+  "generated_at_utc": "2026-10-07T10:41:08.940921+00:00",
+  "history_size": 52,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v5",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7513483242130345984",
+  "linkedin_post_id": "urn:li:share:7513548971152289792",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1379,
-  "published_utf8_byte_count": 1405,
-  "published_guide_link": "https://tinyurl.com/yttbxapr"
+  "published_character_count": 1480,
+  "published_utf8_byte_count": 1504,
+  "published_guide_link": "https://tinyurl.com/ybd3yfv2"
 }
