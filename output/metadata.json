@@ -1,27 +1,27 @@
 {
-  "topic": "Coding & DSA",
-  "content_format": "opinion",
+  "topic": "Core Java",
+  "content_format": "story",
   "question_count": 0,
   "questions": [],
-  "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1480,
+  "guide_link": "https://tinyurl.com/yttbxapr",
+  "character_count": 1361,
   "hashtags": [
-    "#JavaBackend",
+    "#JavaDeveloper",
+    "#CoreJava",
     "#SpringBoot",
-    "#Microservices",
-    "#SystemDesign",
-    "#InterviewPreparation"
+    "#BackendEngineering",
+    "#TechCareers"
   ],
-  "fingerprint": "3042a30b2d1e31dabb2d",
-  "generated_at_utc": "2026-10-07T10:41:08.940921+00:00",
-  "history_size": 52,
+  "fingerprint": "cb0d2b74bb39171bb986",
+  "generated_at_utc": "2026-10-07T14:33:00.200034+00:00",
+  "history_size": 53,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v5",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7513548971152289792",
+  "linkedin_post_id": "urn:li:share:7513607320577282048",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1480,
-  "published_utf8_byte_count": 1504,
-  "published_guide_link": "https://tinyurl.com/ybd3yfv2"
+  "published_character_count": 1361,
+  "published_utf8_byte_count": 1375,
+  "published_guide_link": "https://tinyurl.com/yttbxapr"
 }
