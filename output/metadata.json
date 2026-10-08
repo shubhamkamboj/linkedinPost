@@ -1,27 +1,27 @@
 {
-  "topic": "Kafka",
-  "content_format": "senior",
+  "topic": "Project Discussion / Senior-Level",
+  "content_format": "comparison",
   "question_count": 0,
   "questions": [],
-  "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1298,
+  "guide_link": "https://tinyurl.com/yttbxapr",
+  "character_count": 1436,
   "hashtags": [
-    "#JavaDeveloper",
-    "#Kafka",
-    "#Microservices",
-    "#BackendEngineering",
-    "#JavaInterview"
+    "#Java",
+    "#JavaProgramming",
+    "#BackendDeveloper",
+    "#SystemDesign",
+    "#SoftwareEngineering"
   ],
-  "fingerprint": "136eb48e2e34ccfb3a3e",
-  "generated_at_utc": "2026-10-07T23:33:03.744749+00:00",
-  "history_size": 54,
+  "fingerprint": "87b1a0e24a9961003bfa",
+  "generated_at_utc": "2026-10-08T06:31:10.698441+00:00",
+  "history_size": 55,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v5",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7513743230090297344",
+  "linkedin_post_id": "urn:li:share:7513848451294457857",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1298,
-  "published_utf8_byte_count": 1328,
-  "published_guide_link": "https://tinyurl.com/ybd3yfv2"
+  "published_character_count": 1436,
+  "published_utf8_byte_count": 1468,
+  "published_guide_link": "https://tinyurl.com/yttbxapr"
 }
