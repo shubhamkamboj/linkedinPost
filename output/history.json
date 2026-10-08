@@ -491,5 +491,19 @@
     "questions": [],
     "generated_at_utc": "2026-10-08T11:58:11.417433+00:00",
     "guide_link": "https://tinyurl.com/ybd3yfv2"
+  },
+  {
+    "fingerprint": "ff91ff3f59a0ac807c5d",
+    "topic": "System Design",
+    "content_format": "question_set",
+    "questions": [
+      "Design a job system supporting retries, backoff and dead-letter queues.",
+      "Design a quota service for API consumers.",
+      "Design real-time inventory sync between online orders and physical stores without overselling.",
+      "Design a system for large-scale feature flags with low-latency reads.",
+      "Design a secure download service with expiring links."
+    ],
+    "generated_at_utc": "2026-10-08T18:18:40.971613+00:00",
+    "guide_link": "https://tinyurl.com/yttbxapr"
   }
 ]

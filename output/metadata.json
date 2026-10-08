@@ -1,27 +1,33 @@
 {
-  "topic": "Spring Boot",
-  "content_format": "architecture",
-  "question_count": 0,
-  "questions": [],
-  "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1520,
-  "hashtags": [
-    "#Java",
-    "#JavaProgramming",
-    "#BackendDeveloper",
-    "#SystemDesign",
-    "#SoftwareEngineering"
+  "topic": "System Design",
+  "content_format": "question_set",
+  "question_count": 5,
+  "questions": [
+    "Design a job system supporting retries, backoff and dead-letter queues.",
+    "Design a quota service for API consumers.",
+    "Design real-time inventory sync between online orders and physical stores without overselling.",
+    "Design a system for large-scale feature flags with low-latency reads.",
+    "Design a secure download service with expiring links."
   ],
-  "fingerprint": "229a5503c5ff2f447ae4",
-  "generated_at_utc": "2026-10-08T11:58:11.417433+00:00",
-  "history_size": 56,
+  "guide_link": "https://tinyurl.com/yttbxapr",
+  "character_count": 1504,
+  "hashtags": [
+    "#JavaBackend",
+    "#SpringBoot",
+    "#Microservices",
+    "#SystemDesign",
+    "#InterviewPreparation"
+  ],
+  "fingerprint": "ff91ff3f59a0ac807c5d",
+  "generated_at_utc": "2026-10-08T18:18:40.971613+00:00",
+  "history_size": 57,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v5",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7513930747590733825",
+  "linkedin_post_id": "urn:li:share:7514026501185634308",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1520,
-  "published_utf8_byte_count": 1538,
-  "published_guide_link": "https://tinyurl.com/ybd3yfv2"
+  "published_character_count": 1504,
+  "published_utf8_byte_count": 1522,
+  "published_guide_link": "https://tinyurl.com/yttbxapr"
 }
