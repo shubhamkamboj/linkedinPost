@@ -1,10 +1,10 @@
 {
-  "topic": "Project Discussion / Senior-Level",
-  "content_format": "comparison",
+  "topic": "Spring Boot",
+  "content_format": "architecture",
   "question_count": 0,
   "questions": [],
-  "guide_link": "https://tinyurl.com/yttbxapr",
-  "character_count": 1436,
+  "guide_link": "https://tinyurl.com/ybd3yfv2",
+  "character_count": 1520,
   "hashtags": [
     "#Java",
     "#JavaProgramming",
@@ -12,16 +12,16 @@
     "#SystemDesign",
     "#SoftwareEngineering"
   ],
-  "fingerprint": "87b1a0e24a9961003bfa",
-  "generated_at_utc": "2026-10-08T06:31:10.698441+00:00",
-  "history_size": 55,
+  "fingerprint": "229a5503c5ff2f447ae4",
+  "generated_at_utc": "2026-10-08T11:58:11.417433+00:00",
+  "history_size": 56,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v5",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7513848451294457857",
+  "linkedin_post_id": "urn:li:share:7513930747590733825",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1436,
-  "published_utf8_byte_count": 1468,
-  "published_guide_link": "https://tinyurl.com/yttbxapr"
+  "published_character_count": 1520,
+  "published_utf8_byte_count": 1538,
+  "published_guide_link": "https://tinyurl.com/ybd3yfv2"
 }
