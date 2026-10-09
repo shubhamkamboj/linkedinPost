@@ -521,5 +521,13 @@
     "questions": [],
     "generated_at_utc": "2026-10-09T08:05:38.064686+00:00",
     "guide_link": "https://tinyurl.com/yttbxapr"
+  },
+  {
+    "fingerprint": "e64ef87b9cc01a75072f",
+    "topic": "Kafka",
+    "content_format": "concept",
+    "questions": [],
+    "generated_at_utc": "2026-10-09T11:33:23.666042+00:00",
+    "guide_link": "https://tinyurl.com/ybd3yfv2"
   }
 ]
