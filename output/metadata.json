@@ -1,10 +1,10 @@
 {
-  "topic": "Java 8+ / Streams / Functional Programming",
-  "content_format": "checklist",
+  "topic": "System Design",
+  "content_format": "comparison",
   "question_count": 0,
   "questions": [],
-  "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1398,
+  "guide_link": "https://tinyurl.com/yttbxapr",
+  "character_count": 1451,
   "hashtags": [
     "#JavaDeveloper",
     "#CoreJava",
@@ -12,16 +12,16 @@
     "#BackendEngineering",
     "#TechCareers"
   ],
-  "fingerprint": "6affb649f415bf6e7c96",
-  "generated_at_utc": "2026-10-10T05:52:04.137397+00:00",
-  "history_size": 62,
+  "fingerprint": "21f2216f641cc0c70317",
+  "generated_at_utc": "2026-10-10T06:14:24.914659+00:00",
+  "history_size": 63,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v5",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7514563384911179777",
+  "linkedin_post_id": "urn:li:share:7514569008495415296",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1398,
-  "published_utf8_byte_count": 1422,
-  "published_guide_link": "https://tinyurl.com/ybd3yfv2"
+  "published_character_count": 1451,
+  "published_utf8_byte_count": 1477,
+  "published_guide_link": "https://tinyurl.com/yttbxapr"
 }
