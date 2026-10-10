@@ -553,5 +553,13 @@
     "questions": [],
     "generated_at_utc": "2026-10-10T06:14:24.914659+00:00",
     "guide_link": "https://tinyurl.com/yttbxapr"
+  },
+  {
+    "fingerprint": "718834e64cec48396559",
+    "topic": "Redis / Caching / Performance",
+    "content_format": "myth_vs_reality",
+    "questions": [],
+    "generated_at_utc": "2026-10-10T15:04:36.624904+00:00",
+    "guide_link": "https://tinyurl.com/ybd3yfv2"
   }
 ]

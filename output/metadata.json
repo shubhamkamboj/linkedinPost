@@ -1,10 +1,10 @@
 {
-  "topic": "System Design",
-  "content_format": "comparison",
+  "topic": "Redis / Caching / Performance",
+  "content_format": "myth_vs_reality",
   "question_count": 0,
   "questions": [],
-  "guide_link": "https://tinyurl.com/yttbxapr",
-  "character_count": 1451,
+  "guide_link": "https://tinyurl.com/ybd3yfv2",
+  "character_count": 1306,
   "hashtags": [
     "#JavaDeveloper",
     "#CoreJava",
@@ -12,16 +12,16 @@
     "#BackendEngineering",
     "#TechCareers"
   ],
-  "fingerprint": "21f2216f641cc0c70317",
-  "generated_at_utc": "2026-10-10T06:14:24.914659+00:00",
-  "history_size": 63,
+  "fingerprint": "718834e64cec48396559",
+  "generated_at_utc": "2026-10-10T15:04:36.624904+00:00",
+  "history_size": 64,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v5",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7514569008495415296",
+  "linkedin_post_id": "urn:li:share:7514702436473835520",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1451,
-  "published_utf8_byte_count": 1477,
-  "published_guide_link": "https://tinyurl.com/yttbxapr"
+  "published_character_count": 1306,
+  "published_utf8_byte_count": 1322,
+  "published_guide_link": "https://tinyurl.com/ybd3yfv2"
 }

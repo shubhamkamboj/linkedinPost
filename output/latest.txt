@@ -1,53 +1,43 @@
-Two backend approaches can both be correct.
+MYTH vs REALITY — Redis / Caching / Performance
 
-The interesting question is not:
+MYTH:
+"More technology automatically means a more scalable system."
 
-"Which one is better?"
+REALITY:
+The result depends on the bottleneck and the constraints.
+
+For example, in a real backend system you may actually run into:
+
+→ hot keys
+
+Adding more components without removing the bottleneck can make the system harder to operate without making it faster.
+
+A better way to reason about Redis / Caching / Performance is:
+
+1. Identify the constraint.
+2. Measure the current behavior.
+3. Change one variable.
+4. Measure again.
+5. Check the new failure mode.
+
+This matters because optimizations move complexity.
+
+A cache can introduce invalidation problems.
+Retries can create load amplification.
+Async processing can introduce ordering and observability challenges.
+More services can introduce network failure.
+
+The mature engineering question is not "Does this technology work?"
 
 It is:
 
-"Which one fits the constraints?"
+"Under which constraints does this decision make sense?"
 
-For System Design, compare:
+That is the difference between using a tool and engineering a system.
 
-OPTION A
-→ availability and failure handling
+📌 A strong backend answer usually covers: what it is → why it exists → when to use it → what can go wrong.
 
-OPTION B
-→ data modeling
-
-I would evaluate them against:
-
-• latency
-• throughput
-• consistency
-• failure behavior
-• operational complexity
-• team expertise
-• observability
-• cost
-
-A faster solution can be worse if it is difficult to operate.
-
-A simpler solution can be better until a specific scale or reliability requirement changes.
-
-For me, a strong engineering answer sounds like:
-
-"I would choose A because of these constraints. If the constraints change, I would move toward B."
-
-That is more useful than memorizing a comparison table.
-
-Technology decisions are conditional.
-
-The context is part of the answer.
-
-One more test I like to use: imagine the traffic, consistency requirement or team size changes tomorrow. If the decision would still be correct, you probably chose a robust boundary. If not, be explicit about the trigger that would make you switch.
-
-That makes a comparison useful in design reviews, not just interview preparation.
-
-📌 For senior roles, connect your answer to scalability, reliability, observability, security and operational cost.
-
-📘 For Java + Spring Boot + Microservices interview preparation:
-https://tinyurl.com/yttbxapr
+📘 I put the complete Java Backend preparation path here:
+https://tinyurl.com/ybd3yfv2
 
 #JavaDeveloper #CoreJava #SpringBoot #BackendEngineering #TechCareers
