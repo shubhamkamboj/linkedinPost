@@ -1,27 +1,27 @@
 {
-  "topic": "Microservices",
-  "content_format": "opinion",
+  "topic": "Java 8+ / Streams / Functional Programming",
+  "content_format": "checklist",
   "question_count": 0,
   "questions": [],
-  "guide_link": "https://tinyurl.com/yttbxapr",
-  "character_count": 1501,
+  "guide_link": "https://tinyurl.com/ybd3yfv2",
+  "character_count": 1398,
   "hashtags": [
-    "#Java",
+    "#JavaDeveloper",
+    "#CoreJava",
     "#SpringBoot",
-    "#Microservices",
-    "#BackendDevelopment",
-    "#SoftwareEngineering"
+    "#BackendEngineering",
+    "#TechCareers"
   ],
-  "fingerprint": "a21bcf55603892b9ee7e",
-  "generated_at_utc": "2026-10-09T23:13:28.850465+00:00",
-  "history_size": 61,
+  "fingerprint": "6affb649f415bf6e7c96",
+  "generated_at_utc": "2026-10-10T05:52:04.137397+00:00",
+  "history_size": 62,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v5",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7514463076759371776",
+  "linkedin_post_id": "urn:li:share:7514563384911179777",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1501,
-  "published_utf8_byte_count": 1531,
-  "published_guide_link": "https://tinyurl.com/yttbxapr"
+  "published_character_count": 1398,
+  "published_utf8_byte_count": 1422,
+  "published_guide_link": "https://tinyurl.com/ybd3yfv2"
 }

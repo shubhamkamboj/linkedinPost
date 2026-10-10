@@ -537,5 +537,13 @@
     "questions": [],
     "generated_at_utc": "2026-10-09T23:13:28.850465+00:00",
     "guide_link": "https://tinyurl.com/yttbxapr"
+  },
+  {
+    "fingerprint": "6affb649f415bf6e7c96",
+    "topic": "Java 8+ / Streams / Functional Programming",
+    "content_format": "checklist",
+    "questions": [],
+    "generated_at_utc": "2026-10-10T05:52:04.137397+00:00",
+    "guide_link": "https://tinyurl.com/ybd3yfv2"
   }
 ]
