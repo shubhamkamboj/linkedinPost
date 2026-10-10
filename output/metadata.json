@@ -1,27 +1,27 @@
 {
-  "topic": "Redis / Caching / Performance",
-  "content_format": "myth_vs_reality",
+  "topic": "Spring Security / APIs / Distributed Systems",
+  "content_format": "story",
   "question_count": 0,
   "questions": [],
-  "guide_link": "https://tinyurl.com/ybd3yfv2",
-  "character_count": 1306,
+  "guide_link": "https://tinyurl.com/yttbxapr",
+  "character_count": 1447,
   "hashtags": [
-    "#JavaDeveloper",
-    "#CoreJava",
+    "#Java",
     "#SpringBoot",
-    "#BackendEngineering",
-    "#TechCareers"
+    "#Microservices",
+    "#BackendDevelopment",
+    "#SoftwareEngineering"
   ],
-  "fingerprint": "718834e64cec48396559",
-  "generated_at_utc": "2026-10-10T15:04:36.624904+00:00",
-  "history_size": 64,
+  "fingerprint": "9920d7401894b9191e4b",
+  "generated_at_utc": "2026-10-10T20:01:34.365601+00:00",
+  "history_size": 65,
   "question_bank_size": 518,
   "generator": "python-standard-library-content-engine-v5",
   "published": true,
-  "linkedin_post_id": "urn:li:share:7514702436473835520",
+  "linkedin_post_id": "urn:li:share:7514777169332482050",
   "linkedin_status": 201,
   "linkedin_api_version": "202609",
-  "published_character_count": 1306,
-  "published_utf8_byte_count": 1322,
-  "published_guide_link": "https://tinyurl.com/ybd3yfv2"
+  "published_character_count": 1447,
+  "published_utf8_byte_count": 1461,
+  "published_guide_link": "https://tinyurl.com/yttbxapr"
 }
