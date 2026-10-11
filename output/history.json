@@ -569,5 +569,13 @@
     "questions": [],
     "generated_at_utc": "2026-10-10T20:01:34.365601+00:00",
     "guide_link": "https://tinyurl.com/yttbxapr"
+  },
+  {
+    "fingerprint": "dcde97492c3d035a2bf8",
+    "topic": "Multithreading & Concurrency",
+    "content_format": "senior",
+    "questions": [],
+    "generated_at_utc": "2026-10-11T01:30:25.598804+00:00",
+    "guide_link": "https://tinyurl.com/ybd3yfv2"
   }
 ]

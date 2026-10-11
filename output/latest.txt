@@ -1,41 +1,48 @@
-I learned something about Spring Security / APIs / Distributed Systems the hard way.
+There is a difference between answering a backend question and answering it like an engineer who owns the system.
 
-The system looked fine in the happy path.
+For Multithreading & Concurrency, I would prepare at three levels.
 
-Then we hit a situation where:
-→ downstream authorization failures
+LEVEL 1 — Correctness
+Can I explain how it works?
 
-The first instinct is usually to fix the visible symptom.
+LEVEL 2 — Trade-offs
+Can I explain why I would choose it over an alternative?
 
-But the better question is:
+LEVEL 3 — Production
+Can I explain what happens when load increases, dependencies fail or data grows?
 
-"What changed in the system's behavior?"
+That third level is where many senior discussions become interesting.
 
-For this kind of problem, I would work through it in this order:
+For example:
 
-1. Establish what changed — deployment, traffic, data volume or dependency behavior.
-2. Find the first signal that moved — latency, errors, queue depth, CPU, memory or throughput.
-3. Separate the symptom from the bottleneck.
-4. Apply the smallest safe mitigation.
-5. Only then decide whether the architecture needs to change.
+Instead of:
+"Use caching for performance."
 
-One design principle I would keep in mind here:
+Ask:
+• What can become stale?
+• How is invalidation handled?
+• What happens during a cache miss storm?
+• What happens if the cache disappears?
 
-→ log security events without leaking secrets
+Instead of:
+"Use retries."
 
-That sounds obvious.
+Ask:
+• Which failures are retryable?
+• How many times?
+• With what backoff?
+• Can retries create a retry storm?
+• Is the operation idempotent?
 
-It becomes much harder when the system is already under pressure and every change has a blast radius.
+That is the mindset I would bring to a senior interview.
 
-The real engineering lesson is not "always do X."
+Don't just explain the happy path.
 
-It is knowing what evidence would make you choose X, Y or nothing at all.
+Explain the decision, the evidence, the failure mode and the operational consequence.
 
-That is the kind of reasoning I try to bring into senior backend discussions.
+📌 Keep asking the next 'why?'. That is often where framework knowledge turns into engineering understanding.
 
-📌 The goal is not to memorize more terms. The goal is to understand the trade-off, failure mode and production impact behind each decision.
+📘 I keep my Java Backend preparation material here:
+https://tinyurl.com/ybd3yfv2
 
-📘 I put the complete Java Backend preparation path here:
-https://tinyurl.com/yttbxapr
-
-#Java #SpringBoot #Microservices #BackendDevelopment #SoftwareEngineering
+#JavaBackend #SpringBoot #Microservices #SystemDesign #InterviewPreparation
